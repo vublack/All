@@ -38,7 +38,7 @@ public class AllCreditTest {
         timeout = 80000;
 //        baseUrl = getPolygon(); /*!!!!Выбор полигона!!!!*/
 //        browser = "chrome";
-        browser = "ie";
+//        browser = "ie";
         startMaximized = true;
 //        System.setProperty("webdriver.ie.driver", ".\\IEDriverServer.exe");
         InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER).arch32().setup();

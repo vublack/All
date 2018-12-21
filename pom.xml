@@ -7,7 +7,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
-        <aspectj.version>1.8.10</aspectj.version>
+        <aspectj.version>1.9.2</aspectj.version>
         <allure-junit4.version>2.8.1</allure-junit4.version>
     </properties>
     <groupId>com.bars</groupId>
