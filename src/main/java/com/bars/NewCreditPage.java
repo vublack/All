@@ -20,11 +20,20 @@ class NewCreditPage {
         $(byXpath("(//*[text()='Початкова сума']/following::*[@class='k-formatted-value k-input'])[1]")).shouldBe(visible).click();
         $(byXpath("//*[@k-ng-model='credit.sumValue']")).setValue(sum);
     }
-    void initiativeButtonClick(){
-        $(byXpath("//label[text()='Ініціатива']//following-sibling::button")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
-        $(byXpath("//th[@data-field='BRANCH']/a[@class='k-grid-filter']")).shouldBe(visible).click();
+    void fillInitiative(String initiative){
+        SelenideElement initiator=$("#inptBranch").shouldBe(visible);
+        executeJavaScript("arguments[0].removeAttribute('disabled');",initiator);
+        initiator.shouldBe(visible).setValue(initiative);
+
     }
+/*    void initiativeButtonClick(){
+        $x("//label[text()='Ініціатива']//following-sibling::button").shouldBe(visible).click();
+        switchWindow.switchToWindow();
+        $x("//*[text()='Довідник: ']").shouldBe(visible).click();
+        SelenideElement filterBranch = $x("//th[@data-field='BRANCH']/a[@class='k-grid-filter']").shouldBe(visible);
+        executeJavaScript("arguments[0].setAttribute('style', 'overflow: visible')",filterBranch);
+        executeJavaScript("arguments[0].click()",filterBranch);
+    }*/
     void filterInput(String znach){
         $(byXpath("//input[@data-bind='value:filters[0].value']")).shouldBe(visible).setValue(znach).pressEnter();
     }
@@ -40,6 +49,11 @@ class NewCreditPage {
         SelenideElement rateValue = $(byAttribute("k-ng-model", "credit.rateAValue"));
         executeJavaScript("arguments[0].setAttribute('style', 'display: inline-block')",rateValue);
         rateValue.shouldBe(visible).setValue(rate);
+    }
+    void ratesButtonClick(){
+        $x("//input[@id='refBaseNameRate']/preceding-sibling::button").shouldBe(visible).click();
+        switchWindow.switchToWindow();
+        $x("//th[@data-field='BR_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     void typeOfCredit(String creditType){
         $(byXpath("//span[text()='Самостійно залучені кошти']/preceding::span[@class='k-select'][1]")).shouldBe(visible).click();

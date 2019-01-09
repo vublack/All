@@ -16,33 +16,40 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.StringContains.containsString;
 
 
-class WorkCreditPage {
+class BriefcaseWorkCreditPage {
 
-    void chooseCredit(String refCredit){
+    static void chooseCredit(String refCredit){
         $(byXpath("//*[text()='"+refCredit+"']")).shouldBe(visible).click();
     }
-    void buildRepaymentSchedule(){
+    static void buildRepaymentSchedule(){
         $(byXpath("//a[@data-qtip='КД: Побудова ГПК для обраного КД']")).shouldBe(visible).click();
     }
-    void getTableName(){
+    static void getTableName(){
         System.out.println($("#mainReferenceGrid_header_hd").shouldBe(visible).getText());
     }
-    void matchingSumInGPK(String sumCredit){
+    static void matchingSumInGpkFo(String sumCredit){
+        String repaymentOfDebt = $(byXpath("(//tfoot/tr/td/div)[6]")).shouldBe(visible).shouldHave(text(sumCredit)).getText();
+        System.out.println("Сума погашення осн. боргу: " + repaymentOfDebt);
+    }
+    static void matchingSumInGpkUo(String sumCredit){
         String repaymentOfDebt = $(byXpath("(//tfoot/tr/td/div)[5]")).shouldBe(visible).shouldHave(text(sumCredit)).getText();
         System.out.println("Сума погашення осн. боргу: " + repaymentOfDebt);
     }
-    void eventsTimetableOfBriefcaseButton(){
+    static void eventsTimetableOfBriefcaseButtonUo(){
         $(byXpath("//a[@data-qtip='Події в КП']")).shouldBe(visible).click();
     }
-    void chooseInterval(String day){
+    static void eventsTimetableOfBriefcaseButtonFo(){
+        $(byXpath("//a[@data-qtip='КП: Графік подій по портфелю']")).shouldBe(visible).click();
+    }
+    static void chooseInterval(String day){
         $(byXpath("//input[@name ='B']")).shouldBe(visible).setValue(day);
         $(byXpath("//input[@name ='E']")).shouldBe(visible).setValue(day);
         $(byXpath("(//*[@class= 'x-btn-inner x-btn-inner-center'])[text()='Виконати']")).shouldBe(visible).click();
     }
-    void progressBar(){
+    static void progressBar(){
         $(byXpath("//*[@class = 'x-mask-msg-text']")).shouldNotBe(visible);
     }
-    void checkEventsTimetableOfBriefcase(String expectedNum){
+    static void checkEventsTimetableOfBriefcase(String expectedNum){
         List<SelenideElement> eventsTimetable = $$(byXpath("//div[@class='x-grid-cell-inner ']")).filter(visible).shouldHaveSize(54);
         List<String> eventsTimetableList = eventsTimetable.stream().map(WebElement::getText).collect(Collectors.toList());
         assertThat("None of elements contains sub-string", eventsTimetableList, hasItem(containsString(expectedNum)));
