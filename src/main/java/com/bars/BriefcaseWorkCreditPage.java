@@ -49,8 +49,8 @@ class BriefcaseWorkCreditPage {
     static void progressBar(){
         $(byXpath("//*[@class = 'x-mask-msg-text']")).shouldNotBe(visible);
     }
-    static void checkEventsTimetableOfBriefcase(String expectedNum){
-        List<SelenideElement> eventsTimetable = $$(byXpath("//div[@class='x-grid-cell-inner ']")).filter(visible).shouldHaveSize(54);
+    static void checkEventsTimetableOfBriefcase(String expectedNum, int size){
+        List<SelenideElement> eventsTimetable = $$(byXpath("//div[@class='x-grid-cell-inner ']")).filter(visible).shouldHaveSize(size);
         List<String> eventsTimetableList = eventsTimetable.stream().map(WebElement::getText).collect(Collectors.toList());
         assertThat("None of elements contains sub-string", eventsTimetableList, hasItem(containsString(expectedNum)));
         System.out.println("Графік подій по портфелю" + eventsTimetableList);

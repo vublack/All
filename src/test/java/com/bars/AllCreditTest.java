@@ -50,7 +50,7 @@ public class AllCreditTest {
     }
 
 
-
+//    @Ignore
     @Test
     public void bmdFilterBefor(){
         open("/");
@@ -58,34 +58,33 @@ public class AllCreditTest {
         switchWindow.switchToMainFrame();
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
-        filterBeforFillingTable.setUserFilter("123", "ND");
-        filterBeforFillingTable.saveUserFilter("123");
+        filterBeforFillingTable.setUserFilter("564", "ND");
+        filterBeforFillingTable.saveUserFilter("564");
         filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("123");
+        filterBeforFillingTable.chooseUserFilter("564");
         filterBeforFillingTable.editButton();
-        filterBeforFillingTable.editUserFilter("123");
+        filterBeforFillingTable.editUserFilter("564");
         filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("123");
+        filterBeforFillingTable.chooseUserFilter("564");
         filterBeforFillingTable.deleteUserFilter();
         switchWindow.switchToDefaultContent();
     }
 
-
+//    @Ignore
     @Test
     public void creditLegalEntityTest() {
         open("/");
         //Страница поиска
         loginPage.prof();
         String base = loginPage.getPolygon();
-//        String pol = $x("(//*[text()='База даних:']/following::span)[1]").shouldBe(visible).getText();
         searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
-        if(base.equals("RCMMFO"))
+ /*       if(base.equals("RCMMFO"))
         {
             //Робота з фільтром
             filterBeforFillingTable.clearFilter();
             filterBeforFillingTable.furtherButtonClick();
-        }
+        }*/
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdUoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
@@ -206,6 +205,16 @@ public class AllCreditTest {
         //Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
         String workCreditOfLegalEntityBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
+        BriefcaseWorkCreditPage.buildRepaymentSchedule();
+        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.windowMaximize();
+        String gpkUoWindow = getWebDriver().getWindowHandle();
+        BriefcaseWorkCreditPage.getTableName();
+        BriefcaseWorkCreditPage.matchingSumInGpkUo(numSum+".00");
+        switchWindow.closeWindow(gpkUoWindow);
+        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.switchToMainFrame();
+        BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonUo();
         switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
@@ -215,25 +224,25 @@ public class AllCreditTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
+        if( base.equals("OBMMFOT1"))
+        {
+           int sizeCollection = 72;
+           BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
+        }
+        else {
+            int sizeCollection = 54;
+            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
+        }
         switchWindow.closeWindow(EventsTimetableUoWindow);
-        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.switchToMainFrame();
-        BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
-        BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.windowMaximize();
-        String gpkUoWindow = getWebDriver().getWindowHandle();
-        BriefcaseWorkCreditPage.getTableName();
-        BriefcaseWorkCreditPage.matchingSumInGpkUo(numSum+".00");
-        switchWindow.closeWindow(gpkUoWindow);
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.switchToDefaultContent();
     }
-
+//    @Ignore
     @Test
     public void kreditFoTest() {
         open("/");
+        loginPage.prof();
+        String base = loginPage.getPolygon();
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "$RM_WCCK");
         switchWindow.switchToMainFrame();
         //Кнопка Новый КД(переключение на окно Нового КД)
@@ -309,6 +318,16 @@ public class AllCreditTest {
         //Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
         String workCreditFoBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
+        BriefcaseWorkCreditPage.buildRepaymentSchedule();
+        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.windowMaximize();
+        String gpkFoWindow = getWebDriver().getWindowHandle();
+        BriefcaseWorkCreditPage.getTableName();
+        BriefcaseWorkCreditPage.matchingSumInGpkFo(numSum+".00");
+        switchWindow.closeWindow(gpkFoWindow);
+        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
+        switchWindow.switchToMainFrame();
+        BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonFo();
         switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
@@ -318,18 +337,16 @@ public class AllCreditTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
+        if( base.equals("OBMMFOT1"))
+        {
+            int sizeCollection = 72;
+            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
+        }
+        else {
+            int sizeCollection = 54;
+            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
+        }
         switchWindow.closeWindow(EventsTimetableFoWindow);
-        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
-        switchWindow.switchToMainFrame();
-        BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
-        BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
-        switchWindow.windowMaximize();
-        String gpkFoWindow = getWebDriver().getWindowHandle();
-        BriefcaseWorkCreditPage.getTableName();
-        BriefcaseWorkCreditPage.matchingSumInGpkFo(numSum+".00");
-        switchWindow.closeWindow(gpkFoWindow);
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
         switchWindow.switchToDefaultContent();
     }
