@@ -75,13 +75,14 @@ class NewCreditPage {
         switchWindow.switchToWindow();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
-    void chooseGKD(String gKD){
-        $(byXpath("(//label[text()='Приналежність до ГКД:']/following::span[@class='k-select'])[1]")).shouldBe(visible).click();
-        String gkdMembership = String.format("((//li[@class='k-item ng-scope'])[text()='%s'])", gKD);
-        $(byXpath(gkdMembership)).shouldBe(visible).click();
-//        SelenideElement optionsGKD = $(byXpath(gkdMembership));
-//        executeJavaScript("arguments[0].hover",optionsGKD);
-//        optionsGKD.shouldBe(visible).click();
+
+    void chooseGKD(){
+//    void chooseGKD(String gKD){
+//        $(byXpath("(//label[text()='Приналежність до ГКД:']/following::span[@class='k-select'])[1]")).shouldBe(visible).click();
+//        String gkdMembership = String.format("((//li[@class='k-item ng-scope'])[text()='%s'])", gKD);
+//        $(byXpath(gkdMembership)).shouldBe(visible).click();
+        executeJavaScript("$('[k-ng-model=\"credit.belongtoGKD\"]').data('kendoDropDownList').select(1);");
+        executeJavaScript("$('[k-ng-model=\"credit.belongtoGKD\"]').data('kendoDropDownList').trigger('change');");
     }
 
     String getConclusionDate(){

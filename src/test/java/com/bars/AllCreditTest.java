@@ -9,8 +9,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.*;
 import org.junit.rules.TestRule;
 import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AllCreditTest {
@@ -50,7 +49,7 @@ public class AllCreditTest {
     }
 
 
-//    @Ignore
+//   @Ignore
     @Test
     public void bmdFilterBefor(){
         open("/");
@@ -104,15 +103,18 @@ public class AllCreditTest {
         newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkuo"));
         switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
+//        executeJavaScript("$('#ddlVidd').data('kendoDropDownList').select(1);");
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
         newCreditPage.productOfCredit1();
         switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
+
         if( base.equals("MMFOT")|| base.equals("OBMMFOT1"))
         {
-            newCreditPage.chooseGKD("Ні");
+//            newCreditPage.chooseGKD("Ні");
+            newCreditPage.chooseGKD();
         }
 
         //Вкладка Дані про погашення
