@@ -49,7 +49,7 @@ public class AllCreditTest {
     }
 
 
-//   @Ignore
+   @Ignore
     @Test
     public void bmdFilterBefor(){
         open("/");
@@ -69,7 +69,7 @@ public class AllCreditTest {
         switchWindow.switchToDefaultContent();
     }
 
-//    @Ignore
+   @Ignore
     @Test
     public void creditLegalEntityTest() {
         open("/");
@@ -78,12 +78,12 @@ public class AllCreditTest {
         String base = loginPage.getPolygon();
         searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
- /*       if(base.equals("RCMMFO"))
+        if(base.equals("RCMMFO"))
         {
             //Робота з фільтром
             filterBeforFillingTable.clearFilter();
             filterBeforFillingTable.furtherButtonClick();
-        }*/
+        }
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdUoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
