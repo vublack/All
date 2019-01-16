@@ -49,7 +49,7 @@ public class AllCreditTest {
     }
 
 
-   @Ignore
+//   @Ignore
     @Test
     public void bmdFilterBefor(){
         open("/");
@@ -69,7 +69,7 @@ public class AllCreditTest {
         switchWindow.switchToDefaultContent();
     }
 
-   @Ignore
+//   @Ignore
     @Test
     public void creditLegalEntityTest() {
         open("/");
