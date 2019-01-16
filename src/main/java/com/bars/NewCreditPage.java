@@ -43,6 +43,7 @@ class NewCreditPage {
     void okpoButtonClick(){
         $(byXpath("//label[text()='OKПO']/preceding::button[@class='pf-icon pf-16 pf-book k-button'][1]")).shouldBe(visible).click();
         switchWindow.switchToWindow();
+        $x("(//div[contains(@title,'Клієнт')])[3]").shouldBe(visible).click();
         $(byXpath("//th[@data-field='RNK']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     void ratesInput(String rate){

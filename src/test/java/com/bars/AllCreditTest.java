@@ -261,7 +261,6 @@ public class AllCreditTest {
         newCreditPage.okpoButtonClick();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkfo"));
-//        newCreditFoPage.filterInput("97412501");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.ratesButtonClick();
         newCreditPage.filterInputClick();
