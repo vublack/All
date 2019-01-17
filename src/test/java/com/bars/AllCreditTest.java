@@ -51,26 +51,6 @@ public class AllCreditTest {
 
 //   @Ignore
     @Test
-    public void bmdFilterBefor(){
-        open("/");
-        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
-        switchWindow.switchToMainFrame();
-        //Робота з фільтром
-        filterBeforFillingTable.clearFilter();
-        filterBeforFillingTable.setUserFilter("564", "ND");
-        filterBeforFillingTable.saveUserFilter("564");
-        filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("564");
-        filterBeforFillingTable.editButton();
-        filterBeforFillingTable.editUserFilter("564");
-        filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("564");
-        filterBeforFillingTable.deleteUserFilter();
-        switchWindow.switchToDefaultContent();
-    }
-
-//   @Ignore
-    @Test
     public void creditLegalEntityTest() {
         open("/");
         //Страница поиска
@@ -188,7 +168,7 @@ public class AllCreditTest {
         briefcaseNewCreditPage.pressRefreshBriefcase();
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
-        briefcaseNewCreditPage.сreditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
+        briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
         switchWindow.switchToDefaultContent();
 
 
@@ -300,7 +280,7 @@ public class AllCreditTest {
         briefcaseNewCreditPage.pressRefreshBriefcase();
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
-        briefcaseNewCreditPage.сreditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
+        briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
         switchWindow.switchToDefaultContent();
 
 
