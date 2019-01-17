@@ -31,7 +31,6 @@ public class AllCreditTest {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
         timeout = 80000;
-//        baseUrl = getPolygon(); /*!!!!Выбор полигона!!!!*/
 //        browser = "chrome";
         browser = "ie";
         startMaximized = true;
