@@ -76,7 +76,7 @@ public class MetadatabaseTest extends BaseLoginTest {
         switchWindow.switchToDefaultContent();
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void bmdRows() {
         open("/");
@@ -126,7 +126,7 @@ public class MetadatabaseTest extends BaseLoginTest {
         switchWindow.switchToDefaultContent();
      }
 
-    @Ignore
+//    @Ignore
     @Test
     public void bmdDowload() throws IOException {
         open("/");

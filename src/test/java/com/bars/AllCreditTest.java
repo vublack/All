@@ -49,26 +49,8 @@ public class AllCreditTest extends BaseLoginTest {
     }
 
 */
-    @Test
-    public void bmdFilterBefor(){
-        open("/");
-        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
-        switchWindow.switchToMainFrame();
-        //Робота з фільтром
-        filterBeforFillingTable.clearFilter();
-        filterBeforFillingTable.setUserFilter("564", "ND");
-        filterBeforFillingTable.saveUserFilter("564");
-        filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("564");
-        filterBeforFillingTable.editButton();
-        filterBeforFillingTable.editUserFilter("564");
-        filterBeforFillingTable.userFilterTab();
-        filterBeforFillingTable.chooseUserFilter("564");
-        filterBeforFillingTable.deleteUserFilter();
-        switchWindow.switchToDefaultContent();
-    }
 
-    @Ignore
+//    @Ignore
     @Test
     public void creditLegalEntityTest() {
         open("/");
@@ -238,7 +220,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.switchToDefaultContent();
     }
-    @Ignore
+//    @Ignore
     @Test
     public void kreditFoTest() {
         open("/");
