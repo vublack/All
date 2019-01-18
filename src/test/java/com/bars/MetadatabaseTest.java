@@ -7,10 +7,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TestRule;
 import org.openqa.selenium.By;
 
@@ -24,7 +21,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class MetadatabaseTest {
+public class MetadatabaseTest extends BaseLoginTest {
     private static LoginPage loginPage = new LoginPage();
     private static SearchPage searchPage = new SearchPage();
     private static SwitchWindow switchWindow = new SwitchWindow();
@@ -34,11 +31,13 @@ public class MetadatabaseTest {
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
+
+/*
     @BeforeClass
     public static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
-        timeout = 80000;
+        timeout = 40000;
 //        browser = "chrome";
         browser = "ie";
         startMaximized = true;
@@ -54,6 +53,7 @@ public class MetadatabaseTest {
         searchPage.chooseBranch();
 
     }
+*/
 
 
 //   @Ignore
@@ -76,7 +76,7 @@ public class MetadatabaseTest {
         switchWindow.switchToDefaultContent();
     }
 
-//   @Ignore
+    @Ignore
     @Test
     public void bmdRows() {
         open("/");
@@ -102,6 +102,7 @@ public class MetadatabaseTest {
         switchWindow.switchToDefaultContent();
         }
 
+//    @Ignore
     @Test
     public void bmdChko()  {
         open("/");
@@ -125,7 +126,8 @@ public class MetadatabaseTest {
         switchWindow.switchToDefaultContent();
      }
 
-   @Test
+    @Ignore
+    @Test
     public void bmdDowload() throws IOException {
         open("/");
         //Страница поиска
@@ -140,12 +142,14 @@ public class MetadatabaseTest {
         switchWindow.switchToDefaultContent();
     }
 
+/*
 
 
     @AfterClass
     public static void tearDown() {
         SelenideLogger.removeListener("AllureSelenide");
     }
+*/
 
 }
 

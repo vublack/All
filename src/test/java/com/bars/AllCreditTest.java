@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class AllCreditTest {
+public class AllCreditTest extends BaseLoginTest {
     //    private LoginPage loginPage = page(LoginPage.class);
     private static LoginPage loginPage = new LoginPage();
     private Calculation calculation = page(Calculation.class);
@@ -26,6 +26,7 @@ public class AllCreditTest {
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
+/*
     @BeforeClass
     public static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
@@ -47,8 +48,27 @@ public class AllCreditTest {
 
     }
 
+*/
+    @Test
+    public void bmdFilterBefor(){
+        open("/");
+        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
+        switchWindow.switchToMainFrame();
+        //Робота з фільтром
+        filterBeforFillingTable.clearFilter();
+        filterBeforFillingTable.setUserFilter("564", "ND");
+        filterBeforFillingTable.saveUserFilter("564");
+        filterBeforFillingTable.userFilterTab();
+        filterBeforFillingTable.chooseUserFilter("564");
+        filterBeforFillingTable.editButton();
+        filterBeforFillingTable.editUserFilter("564");
+        filterBeforFillingTable.userFilterTab();
+        filterBeforFillingTable.chooseUserFilter("564");
+        filterBeforFillingTable.deleteUserFilter();
+        switchWindow.switchToDefaultContent();
+    }
 
-//   @Ignore
+    @Ignore
     @Test
     public void creditLegalEntityTest() {
         open("/");
@@ -218,7 +238,7 @@ public class AllCreditTest {
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.switchToDefaultContent();
     }
-//    @Ignore
+    @Ignore
     @Test
     public void kreditFoTest() {
         open("/");
@@ -331,11 +351,13 @@ public class AllCreditTest {
         switchWindow.switchToDefaultContent();
     }
 
+/*
 
     @AfterClass
     public static void tearDown() {
         SelenideLogger.removeListener("AllureSelenide");
     }
 
+*/
 }
 
