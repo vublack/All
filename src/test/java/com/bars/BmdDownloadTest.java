@@ -125,5 +125,31 @@ public class MetadatabaseTest extends BaseLoginTest {
         switchWindow.switchToOldWindow(OverdraftLimWindow);
         switchWindow.switchToDefaultContent();
      }
+
+//    @Ignore
+    @Test
+    public void bmdDowload() throws IOException {
+        open("/");
+        //Страница поиска
+        searchPage.searchFunction("Адміністрування шаблонів", "$RM_MAIN");
+        switchWindow.switchToMainFrame();
+        //Робота з фільтром
+        filterBeforFillingTable.clearFilter();
+        filterBeforFillingTable.furtherButtonClick();
+        $x("//*[text()='DPT_STROK_PENS']").shouldBe(visible).click();
+        Runtime.getRuntime().exec(".\\DownloadTemplate.exe");
+        $(byCssSelector("a[data-qtip='скачати шаблон']")).shouldBe(visible).click();
+        switchWindow.switchToDefaultContent();
+    }
+
+/*
+
+
+    @AfterClass
+    public static void tearDown() {
+        SelenideLogger.removeListener("AllureSelenide");
+    }
+*/
+
 }
 
