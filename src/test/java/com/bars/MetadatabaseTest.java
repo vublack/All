@@ -3,20 +3,13 @@ package com.bars;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.github.bonigarcia.wdm.DriverManagerType;
-import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.*;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.openqa.selenium.By;
 
-import java.io.IOException;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -31,30 +24,6 @@ public class MetadatabaseTest extends BaseLoginTest {
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
-
-/*
-    @BeforeClass
-    public static void setup() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-//        Configuration.fastSetValue=true;
-        timeout = 40000;
-//        browser = "chrome";
-        browser = "ie";
-        startMaximized = true;
-//        System.setProperty("webdriver.ie.driver", ".\\IEDriverServer.exe");
-        InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER).arch32().setup();
-        open("/");
-        //Логин
-        loginPage.fillLoginForm(ConfigProperties.getTestProperty("login"), ConfigProperties.getTestProperty("password"));
-        loginPage.goOn();
-        switchWindow.switchToMainFrame();
-        searchPage.h1();
-        switchWindow.switchToDefaultContent();
-        searchPage.chooseBranch();
-
-    }
-*/
-
 
 //   @Ignore
     @Test
