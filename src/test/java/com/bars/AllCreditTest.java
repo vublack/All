@@ -305,7 +305,7 @@ public class AllCreditTest extends BaseLoginTest {
         }
         switchWindow.closeWindow(EventsTimetableFoWindow);
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
-        switchWindow.switchToDefaultContent();
+//        switchWindow.switchToDefaultContent();
     }
 }
 
