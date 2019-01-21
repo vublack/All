@@ -6,9 +6,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
+import org.junit.*;
 import org.junit.rules.TestRule;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -51,6 +49,17 @@ public class BaseLoginTest {
         $x("//*[@id='userProfile']/div[2]/a[2]").shouldBe(visible).click();
         SelenideLogger.removeListener("AllureSelenide");
     }
+
+    @Before
+    public void beforeMethod() {
+        open("/");
+    }
+
+    @After
+    public void afterMethod() {
+        switchWindow.switchToDefaultContent();
+    }
+
 
 }
 

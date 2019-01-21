@@ -28,7 +28,7 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
-        open("/");
+
         //Страница поиска
         loginPage.prof();
         String base = loginPage.getPolygon();
@@ -193,12 +193,12 @@ public class AllCreditTest extends BaseLoginTest {
         }
         switchWindow.closeWindow(EventsTimetableUoWindow);
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.switchToDefaultContent();
+
     }
 //    @Ignore
     @Test
     public void kreditFoTest() {
-        open("/");
+//        open("/");
         loginPage.prof();
         String base = loginPage.getPolygon();
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "$RM_WCCK");
@@ -257,7 +257,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
-        switchWindow.switchToDefaultContent();
+//        switchWindow.switchToDefaultContent();
 
 
 /*

@@ -28,7 +28,7 @@ public class MetadatabaseTest extends BaseLoginTest {
 //   @Ignore
     @Test
     public void bmdFilterBefor(){
-        open("/");
+//        open("/");
         searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
         //Робота з фільтром
@@ -42,13 +42,13 @@ public class MetadatabaseTest extends BaseLoginTest {
         filterBeforFillingTable.userFilterTab();
         filterBeforFillingTable.chooseUserFilter("564");
         filterBeforFillingTable.deleteUserFilter();
-        switchWindow.switchToDefaultContent();
+//        switchWindow.switchToDefaultContent();
     }
 
 //    @Ignore
     @Test
     public void bmdRows() {
-        open("/");
+//        open("/");
 
         //Страница поиска
         searchPage.searchFunction("FOREX. Довідник спецпараметрів рахунків", "$RM_WFRX");
@@ -68,13 +68,13 @@ public class MetadatabaseTest extends BaseLoginTest {
 
         //!!!!Довідник спецпараметрів!!!!-!!!!Видалення рядка!!!!
         bmdActionsWithRow.DelRow("98A");
-        switchWindow.switchToDefaultContent();
+//        switchWindow.switchToDefaultContent();
         }
 
 //    @Ignore
     @Test
     public void bmdChko()  {
-        open("/");
+//        open("/");
         //Страница поиска
         searchPage.searchFunction("Ліміти.", "$RM_OVRW");
         switchWindow.switchToMainFrame();
@@ -92,7 +92,7 @@ public class MetadatabaseTest extends BaseLoginTest {
         System.out.println("Ркзультат: " + Result);
         switchWindow.closeWindow(netCreditTurnover );
         switchWindow.switchToOldWindow(OverdraftLimWindow);
-        switchWindow.switchToDefaultContent();
+//        switchWindow.switchToDefaultContent();
      }
 }
 
