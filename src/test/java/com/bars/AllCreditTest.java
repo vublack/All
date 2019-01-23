@@ -2,11 +2,10 @@ package com.bars;
 
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
-
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -25,7 +24,7 @@ public class AllCreditTest extends BaseLoginTest {
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 
-//    @Ignore
+    @Ignore
     @Test
     public void creditLegalEntityTest() {
 
@@ -257,7 +256,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
-//        switchWindow.switchToDefaultContent();
+        switchWindow.switchToDefaultContent();
 
 
 /*
