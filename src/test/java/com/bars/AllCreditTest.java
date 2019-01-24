@@ -24,7 +24,7 @@ public class AllCreditTest extends BaseLoginTest {
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 
-    @Ignore
+//    @Ignore
     @Test
     public void creditLegalEntityTest() {
 
