@@ -46,6 +46,13 @@ class NewCreditPage {
         $x("(//div[contains(@title,'Клієнт')])[3]").shouldBe(visible).click();
         $(byXpath("//th[@data-field='RNK']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
+    void okpoRNKchoose(String oKPOchoose, String rNKchoose){
+        executeJavaScript("$('#refCust').val(arguments[0])", oKPOchoose);
+        executeJavaScript("$('#inptRnk').val(arguments[0])", rNKchoose);
+        executeJavaScript("$(\"#refCust\").trigger(\"change\");\n" +
+                                "$(\"#inptRnk\").trigger(\"change\");");
+
+    }
     void ratesInput(String rate){
         SelenideElement rateValue = $(byAttribute("k-ng-model", "credit.rateAValue"));
         executeJavaScript("arguments[0].setAttribute('style', 'display: inline-block')",rateValue);

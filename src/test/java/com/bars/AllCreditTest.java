@@ -24,7 +24,7 @@ public class AllCreditTest extends BaseLoginTest {
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 
-//    @Ignore
+ //   @Ignore
     @Test
     public void creditLegalEntityTest() {
 
@@ -53,12 +53,12 @@ public class AllCreditTest extends BaseLoginTest {
 //        newCreditPage.filterInput(ConfigProperties.getTestProperty("branch"));
 //        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
-        newCreditPage.okpoButtonClick();
-        newCreditPage.filterInputClick();
-        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkuo"));
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpouo"), ConfigProperties.getTestProperty("rnkuo"));
+//        newCreditPage.okpoButtonClick();
+//        newCreditPage.filterInputClick();
+//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkuo"));
+//        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
-//        executeJavaScript("$('#ddlVidd').data('kendoDropDownList').select(1);");
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
         newCreditPage.productOfCredit1();
@@ -213,10 +213,11 @@ public class AllCreditTest extends BaseLoginTest {
         String numSum = calculation.randomNum();
         newCreditPage.fillNumSum(numSum, numSum);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
-        newCreditPage.okpoButtonClick();
-        newCreditPage.filterInputClick();
-        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkfo"));
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpofo"), ConfigProperties.getTestProperty("rnkfo"));
+//        newCreditPage.okpoButtonClick();
+//        newCreditPage.filterInputClick();
+//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkfo"));
+//        switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.ratesButtonClick();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("9999");
