@@ -82,7 +82,7 @@ public class MetadatabaseTest extends BaseLoginTest {
         $(By.xpath("(//*[@class='x-grid-cell-inner x-grid-cell-inner-row-numberer'])[text()='2']")).shouldBe(visible).click();
         String OverdraftLimWindow = getWebDriver().getWindowHandle();
         $(By.xpath("//*[@class='x-btn-icon-el INSERT ']")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.forceSwitchToWindow(OverdraftLimWindow);
         $(By.xpath("//input[@name='X']")).shouldBe(visible).setValue("01.01.2018");
         $(byText("Виконати")).click();
         $(byText("Далі")).click();

@@ -48,7 +48,7 @@ class NewCreditPage {
     }
     void okpoRNKchoose(String oKPOchoose, String rNKchoose){
         executeJavaScript("$('#refCust').val(arguments[0])", oKPOchoose);
-        executeJavaScript("$('#inptRnk').val(arguments[0])", rNKchoose);
+        executeJavaScript("$('#inptRn').val(arguments[0])", rNKchoose);
         executeJavaScript("$(\"#refCust\").trigger(\"change\");\n" +
                                 "$(\"#inptRnk\").trigger(\"change\");");
 
