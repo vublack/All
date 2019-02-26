@@ -66,7 +66,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
 
-        if( base.equals("RCMMFO")|| base.equals("OBMMFOT1"))
+        if( base.equals("MMFOT")|| base.equals("OBMMFOT1"))
         {
 //            newCreditPage.chooseGKD("Ні");
             newCreditPage.chooseGKD();
