@@ -80,6 +80,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
+//        newCreditPage.s260();
+//        newCreditPage.filterInput("01");
+//        switchWindow.switchToOldWindow(newKdUoWindow);
+//        newCreditPage.updateParameter();
         newCreditPage.contractStatus();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("0");
@@ -233,10 +237,6 @@ public class AllCreditTest extends BaseLoginTest {
         //Вкладка Дод. параметри КД
         newCreditPage.creditInsurance();
         newCreditPage.filterInput("NO");
-        switchWindow.switchToOldWindow(newKdFoWindow);
-        newCreditPage.updateParameter();
-        newCreditPage.s260();
-        newCreditPage.filterInput("01");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         newCreditPage.creditProduct();

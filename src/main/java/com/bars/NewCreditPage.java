@@ -115,7 +115,7 @@ class NewCreditPage {
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     void s260(){
-        $(byXpath("(//*[text()='EIBNE']/following::a[@title='Перейдіть на наступну сторінку'])[1]")).shouldBe(visible).click();
+        $(byXpath("(//*[text()='I_CR9']/following::a[@title='Перейдіть на наступну сторінку'])[1]")).shouldBe(visible).click();
         $(byXpath("(//*[text()='Код iндив.споживання за цiлями S260']/following::a)[1]")).shouldBe(visible).click();
         switchWindow.switchToWindow();
         $(byXpath("//th[@data-field='S260']/a[@class='k-grid-filter']")).shouldBe(visible).click();
