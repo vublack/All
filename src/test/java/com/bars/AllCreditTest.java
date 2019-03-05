@@ -235,6 +235,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
+        newCreditPage.s260();
+        newCreditPage.filterInput("01");
+        switchWindow.switchToOldWindow(newKdFoWindow);
+        newCreditPage.updateParameter();
         newCreditPage.creditProduct();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("2");
