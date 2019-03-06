@@ -24,7 +24,7 @@ public class AllCreditTest extends BaseLoginTest {
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 
- //   @Ignore
+//    @Ignore
     @Test
     public void creditLegalEntityTest() {
 
@@ -80,10 +80,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
-//        newCreditPage.s260();
-//        newCreditPage.filterInput("01");
-//        switchWindow.switchToOldWindow(newKdUoWindow);
-//        newCreditPage.updateParameter();
+        newCreditPage.s260();
+        newCreditPage.filterInput("01");
+        switchWindow.switchToOldWindow(newKdUoWindow);
+        newCreditPage.updateParameter();
         newCreditPage.contractStatus();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("0");
@@ -185,7 +185,8 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        if( base.equals("OBMMFOT1"))
+        String auTipe = ConfigProperties.getTestProperty("autorizationtype");
+        if( base.equals("OBMMFOT1") || auTipe.equals("1") )
         {
            int sizeCollection = 72;
            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
@@ -236,6 +237,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.firstPaymentDate(firstPaymentDate);
         //Вкладка Дод. параметри КД
         newCreditPage.creditInsurance();
+        newCreditPage.filterInput("NO");
+        switchWindow.switchToOldWindow(newKdFoWindow);
+        newCreditPage.updateParameter();
+        newCreditPage.partnerPresent();
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
@@ -298,7 +303,8 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        if( base.equals("OBMMFOT1"))
+        String auTipe = ConfigProperties.getTestProperty("autorizationtype");
+        if( base.equals("OBMMFOT1") || auTipe.equals("1") )
         {
             int sizeCollection = 72;
             BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);

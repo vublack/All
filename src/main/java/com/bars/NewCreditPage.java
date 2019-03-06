@@ -120,6 +120,11 @@ class NewCreditPage {
         switchWindow.switchToWindow();
         $(byXpath("//th[@data-field='S260']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
+    void partnerPresent(){
+        $(byXpath("(//*[text()='Наявність партнеру(Так/Ні)']/following::a)[1]")).shouldBe(visible).click();
+        switchWindow.switchToWindow();
+        $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
+    }
 
         //Бюро Кредит.Історій(Спец)
     void contractStatus(){
