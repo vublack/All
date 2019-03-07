@@ -219,5 +219,14 @@ class NewCreditPage {
         return $(By.tagName("h1")).shouldBe(visible).getText().replace("Кредитний договір (", "").replace(")", "");
     }
 
+    String getNBSforSS(String product){
+        return product.substring(0,4);
+    }
+
+    String getOB22forSS(String product){
+        return product.substring(4);
+    }
+
+
 
 }
