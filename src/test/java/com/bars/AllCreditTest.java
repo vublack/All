@@ -205,7 +205,7 @@ public class AllCreditTest extends BaseLoginTest {
 //        open("/");
         loginPage.prof();
         String base = loginPage.getPolygon();
-        System.out.println(ConfigProperties.getTestProperty("productuo"));
+
         String NBSforSS = newCreditPage.getNBSforSS(ConfigProperties.getTestProperty("productuo"));
         System.out.println(NBSforSS);
         String OB22forSS = newCreditPage.getOB22forSS(ConfigProperties.getTestProperty("productuo"));

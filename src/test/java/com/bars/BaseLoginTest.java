@@ -27,7 +27,7 @@ public class BaseLoginTest {
     public static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
-        timeout = 80000;
+        timeout = 100000;
 //        browser = "chrome";
         browser = "ie";
         startMaximized = true;
