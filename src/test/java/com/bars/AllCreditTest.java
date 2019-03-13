@@ -1,8 +1,7 @@
 package com.bars;
-
+import com.bars.credit.AccKdPage;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -18,6 +17,8 @@ public class AllCreditTest extends BaseLoginTest {
     private static SwitchWindow switchWindow = new SwitchWindow();
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
+    private AccKdPage accKdPage = page(AccKdPage.class);
+
 //    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
@@ -27,7 +28,6 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
-
         //Страница поиска
         loginPage.prof();
         String base = loginPage.getPolygon();
@@ -163,7 +163,7 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefUo, "ND");
         filterBeforFillingTable.furtherButtonClick();
-        //Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
+//Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
         String workCreditOfLegalEntityBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
@@ -185,18 +185,25 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        String auTipe = ConfigProperties.getTestProperty("autorizationtype");
-        if( base.equals("OBMMFOT1") || auTipe.equals("1") )
-        {
-           int sizeCollection = 72;
-           BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
-        else {
-            int sizeCollection = 54;
-            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
+        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, 72);
         switchWindow.closeWindow(EventsTimetableUoWindow);
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+////Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
+
+        String nbsForSS = newCreditPage.getNBSforSS(ConfigProperties.getTestProperty("productuo"));
+        String ob22forSS = newCreditPage.getOB22forSS(ConfigProperties.getTestProperty("productuo"));
+
+        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.switchToMainFrame();
+        BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
+        BriefcaseWorkCreditPage.AccountsUoButton();
+        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.windowMaximize();
+        String accKdUOwindow = getWebDriver().getWindowHandle();
+        accKdPage.checkAccSSopening(nbsForSS, ob22forSS);
+        switchWindow.closeWindow(accKdUOwindow);
+        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+
 
     }
 //    @Ignore
@@ -205,12 +212,6 @@ public class AllCreditTest extends BaseLoginTest {
 //        open("/");
         loginPage.prof();
         String base = loginPage.getPolygon();
-
-        String NBSforSS = newCreditPage.getNBSforSS(ConfigProperties.getTestProperty("productuo"));
-        System.out.println(NBSforSS);
-        String OB22forSS = newCreditPage.getOB22forSS(ConfigProperties.getTestProperty("productuo"));
-        System.out.println(OB22forSS);
-
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "$RM_WCCK");
         switchWindow.switchToMainFrame();
         //Кнопка Новый КД(переключение на окно Нового КД)
