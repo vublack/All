@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 
-class NewCreditPage {
+public class NewCreditPage {
     private SwitchWindow switchWindow = page(SwitchWindow.class);
 
             // Вкладка Параметри КД
@@ -219,11 +219,11 @@ class NewCreditPage {
         return $(By.tagName("h1")).shouldBe(visible).getText().replace("Кредитний договір (", "").replace(")", "");
     }
 
-    String getNBSforSS(String product){
+    public String getNBSforSS(String product){
         return product.substring(0,4);
     }
 
-    String getOB22forSS(String product){
+    public String getOB22forSS(String product){
         return product.substring(4);
     }
 
