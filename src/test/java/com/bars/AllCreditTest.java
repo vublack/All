@@ -1,5 +1,8 @@
 package com.bars;
 import com.bars.credit.AccKdPage;
+import com.bars.credit.BriefcaseNewCreditPage;
+import com.bars.credit.BriefcaseWorkCreditPage;
+import com.bars.credit.NewCreditPage;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
@@ -50,15 +53,8 @@ public class AllCreditTest extends BaseLoginTest {
         String newKdUoWindow = getWebDriver().getWindowHandle();
         String numSum = calculation.randomNum();
         newCreditPage.fillNumSum(numSum, numSum);
-//        newCreditPage.initiativeButtonClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("branch"));
-//        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
         newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpouo"), ConfigProperties.getTestProperty("rnkuo"));
-//        newCreditPage.okpoButtonClick();
-//        newCreditPage.filterInputClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkuo"));
-//        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
@@ -231,10 +227,6 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillNumSum(numSum, numSum);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
         newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpofo"), ConfigProperties.getTestProperty("rnkfo"));
-//        newCreditPage.okpoButtonClick();
-//        newCreditPage.filterInputClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkfo"));
-//        switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.ratesButtonClick();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("9999");

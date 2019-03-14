@@ -1,5 +1,6 @@
 package com.bars;
 
+import com.bars.bmd.BmdActionsWithRow;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
