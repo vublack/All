@@ -322,7 +322,6 @@ public class AllCreditTest extends BaseLoginTest {
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
-        BriefcaseWorkCreditPage.chooseCredit("19171634401");
         BriefcaseWorkCreditPage.AccountsUoButton();
         switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
