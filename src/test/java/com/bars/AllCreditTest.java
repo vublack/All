@@ -322,11 +322,11 @@ public class AllCreditTest extends BaseLoginTest {
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
-        BriefcaseWorkCreditPage.AccountsUoButton();
+        BriefcaseWorkCreditPage.AccountsFoButton();
         switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
-        accKdPage.checkAccSSopening("productuo");
+        accKdPage.checkAccSSopening("productfo");
         switchWindow.closeWindow(accKdUOwindow);
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
 
