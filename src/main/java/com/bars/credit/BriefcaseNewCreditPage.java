@@ -1,4 +1,4 @@
-package com.bars;
+package com.bars.credit;
 
 import com.codeborne.selenide.Condition;
 
@@ -7,15 +7,15 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 
-class BriefcaseNewCreditPage {
-    void pressCreateNewKD() {
+public class BriefcaseNewCreditPage {
+    public void pressCreateNewKD() {
         $("a[data-qtip='КП: Введення Нового КД']").shouldBe(Condition.visible).click();
     }
-    void pressRefreshBriefcase(){
+    public void pressRefreshBriefcase(){
         $(byXpath("//span[@class='x-btn-icon-el x-tbar-loading ']")).shouldBe(visible).click();
         $(byXpath("//*[@class = 'x-mask-msg-text']")).shouldNotBe(visible);
     }
-    void creditAuthorization(String autorizationType){
+    public void creditAuthorization(String autorizationType){
         $(byXpath("//a[@data-qtip='КД: Авторизація КД']")).shouldBe(visible).click();
         $(byXpath("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='Так']")).shouldBe(visible).click();
         $(byXpath("//input[@name='M']")).shouldBe(visible).setValue(autorizationType);

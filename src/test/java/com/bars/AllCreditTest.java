@@ -1,8 +1,10 @@
 package com.bars;
-
+import com.bars.credit.AccKdPage;
+import com.bars.credit.BriefcaseNewCreditPage;
+import com.bars.credit.BriefcaseWorkCreditPage;
+import com.bars.credit.NewCreditPage;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -18,6 +20,8 @@ public class AllCreditTest extends BaseLoginTest {
     private static SwitchWindow switchWindow = new SwitchWindow();
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
+    private AccKdPage accKdPage = page(AccKdPage.class);
+
 //    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
@@ -27,10 +31,10 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
-
         //Страница поиска
         loginPage.prof();
         String base = loginPage.getPolygon();
+
         searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
         if(base.equals("RCMMFO"))
@@ -49,15 +53,8 @@ public class AllCreditTest extends BaseLoginTest {
         String newKdUoWindow = getWebDriver().getWindowHandle();
         String numSum = calculation.randomNum();
         newCreditPage.fillNumSum(numSum, numSum);
-//        newCreditPage.initiativeButtonClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("branch"));
-//        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
         newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpouo"), ConfigProperties.getTestProperty("rnkuo"));
-//        newCreditPage.okpoButtonClick();
-//        newCreditPage.filterInputClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkuo"));
-//        switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
@@ -151,10 +148,10 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToDefaultContent();
 
 
-/*
+ /*
         String numSum = "449";
         String firstPaymentDate = "01/08/2018";
-*/
+ */
 
         //Портфель Робочих КД ФО
         searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
@@ -162,9 +159,14 @@ public class AllCreditTest extends BaseLoginTest {
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefUo, "ND");
+
+/*
+        filterBeforFillingTable.setUserFilter("19171634401", "ND");
+*/
         filterBeforFillingTable.furtherButtonClick();
-        //Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
+//Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
         String workCreditOfLegalEntityBriefcaseWindow = getWebDriver().getWindowHandle();
+
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
         switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
@@ -173,6 +175,7 @@ public class AllCreditTest extends BaseLoginTest {
         BriefcaseWorkCreditPage.getTableName();
         BriefcaseWorkCreditPage.matchingSumInGpkUo(numSum+".00");
         switchWindow.closeWindow(gpkUoWindow);
+
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
@@ -185,18 +188,23 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        String auTipe = ConfigProperties.getTestProperty("autorizationtype");
-        if( base.equals("OBMMFOT1") || auTipe.equals("1") )
-        {
-           int sizeCollection = 72;
-           BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
-        else {
-            int sizeCollection = 54;
-            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
+        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, 72);
         switchWindow.closeWindow(EventsTimetableUoWindow);
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+//Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
+        switchWindow.switchToMainFrame();
+        BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
+/*
+        BriefcaseWorkCreditPage.chooseCredit("19171634401");
+*/
+        BriefcaseWorkCreditPage.AccountsUoButton();
+        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.windowMaximize();
+        String accKdUOwindow = getWebDriver().getWindowHandle();
+        accKdPage.checkAccSSopening("productuo");
+        switchWindow.closeWindow(accKdUOwindow);
+        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+
 
     }
 //    @Ignore
@@ -219,10 +227,6 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillNumSum(numSum, numSum);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
         newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpofo"), ConfigProperties.getTestProperty("rnkfo"));
-//        newCreditPage.okpoButtonClick();
-//        newCreditPage.filterInputClick();
-//        newCreditPage.filterInput(ConfigProperties.getTestProperty("rnkfo"));
-//        switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.ratesButtonClick();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("9999");
@@ -315,7 +319,18 @@ public class AllCreditTest extends BaseLoginTest {
         }
         switchWindow.closeWindow(EventsTimetableFoWindow);
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
-//        switchWindow.switchToDefaultContent();
+//Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
+        switchWindow.switchToMainFrame();
+        BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
+        BriefcaseWorkCreditPage.chooseCredit("19171634401");
+        BriefcaseWorkCreditPage.AccountsUoButton();
+        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.windowMaximize();
+        String accKdUOwindow = getWebDriver().getWindowHandle();
+        accKdPage.checkAccSSopening("productuo");
+        switchWindow.closeWindow(accKdUOwindow);
+        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
+
     }
 }
 
