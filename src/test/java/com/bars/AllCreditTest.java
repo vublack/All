@@ -8,10 +8,7 @@ import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
-
-import java.io.FileNotFoundException;
 import java.sql.SQLException;
-
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
