@@ -8,6 +8,10 @@ import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -21,6 +25,7 @@ public class AllCreditTest extends BaseLoginTest {
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
+    private DBconection dBconection = page(DBconection.class);
 
 //    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
@@ -28,6 +33,15 @@ public class AllCreditTest extends BaseLoginTest {
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 
+    @Test
+    public void dbconTest() throws SQLException{
+        loginPage.prof();
+        String base = loginPage.getPolygon();
+        loginPage.prof();
+        dBconection.setupDBconection(base);
+        dBconection.CloseConn();
+
+    }
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
@@ -331,5 +345,6 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
 
     }
+
 }
 

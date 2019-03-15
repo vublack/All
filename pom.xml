@@ -38,7 +38,7 @@
                 <version>2.22.1</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <selenide.baseUrl>http://10.10.17.40:8080/barsroot</selenide.baseUrl>
+                        <selenide.baseUrl>http://10.10.17.44:8080/barsroot</selenide.baseUrl>
                     </systemPropertyVariables>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                     <testFailureIgnore>false</testFailureIgnore>
@@ -107,13 +107,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/ojdbc/ojdbc -->
         <dependency>
-            <groupId>ojdbc</groupId>
-            <artifactId>ojdbc</artifactId>
-            <version>14</version>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.4.0</version>
         </dependency>
-
 
     </dependencies>
 
