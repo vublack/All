@@ -308,7 +308,7 @@ public class AllCreditTest extends BaseLoginTest {
         String EventsTimetableFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
         String auTipe = ConfigProperties.getTestProperty("autorizationtype");
-        if( base.equals("OBMMFOT1") || auTipe.equals("1") )
+        if( base.equals("OBMMFOT") || auTipe.equals("1") || base.equals("OBMMFOT1") )
         {
             int sizeCollection = 72;
             BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
