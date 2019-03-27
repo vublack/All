@@ -35,8 +35,12 @@ public class AllCreditTest extends BaseLoginTest {
         loginPage.prof();
         String base = loginPage.getPolygon();
         loginPage.prof();
+
         dBconection.setupDBconection(base);
-        dBconection.CloseConn();
+        dBconection.selectFromDB();
+
+
+        dBconection.closeConn();
 
     }
 //    @Ignore
@@ -57,7 +61,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdUoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow(briefcaseNewKdUoWindow);
+        switchWindow.forceSwitchToWindow2(briefcaseNewKdUoWindow);
         switchWindow.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
@@ -180,7 +184,7 @@ public class AllCreditTest extends BaseLoginTest {
 
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         String gpkUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
@@ -191,7 +195,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonUo();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
@@ -209,7 +213,7 @@ public class AllCreditTest extends BaseLoginTest {
         BriefcaseWorkCreditPage.chooseCredit("19171634401");
 */
         BriefcaseWorkCreditPage.AccountsUoButton();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productuo");
@@ -229,7 +233,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdFoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow(briefcaseNewKdFoWindow);
+        switchWindow.forceSwitchToWindow2(briefcaseNewKdFoWindow);
         switchWindow.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
@@ -300,7 +304,7 @@ public class AllCreditTest extends BaseLoginTest {
         String workCreditFoBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         String gpkFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
@@ -310,7 +314,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonFo();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
@@ -334,7 +338,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.AccountsFoButton();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productfo");

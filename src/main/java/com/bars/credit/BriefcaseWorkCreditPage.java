@@ -1,8 +1,10 @@
 package com.bars.credit;
 
+import com.bars.DBconection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
 
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +18,7 @@ import static org.hamcrest.core.StringContains.containsString;
 
 
 public class BriefcaseWorkCreditPage {
-
+    private DBconection dBconection = new DBconection();
     public static void chooseCredit(String refCredit){
         $x("//*[text()='"+refCredit+"']").shouldBe(visible).click();
     }
@@ -60,5 +62,4 @@ public class BriefcaseWorkCreditPage {
         assertThat("None of elements contains sub-string", eventsTimetableList, hasItem(containsString(expectedNum)));
         System.out.println("Графік подій по портфелю" + eventsTimetableList);
     }
-
 }

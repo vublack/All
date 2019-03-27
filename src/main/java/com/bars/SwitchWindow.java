@@ -1,18 +1,21 @@
 package com.bars;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class SwitchWindow {
-    public void forceSwitchToWindow(String oldWindowName){
+    public void forceSwitchToWindow2(String oldWindowName){
+        Wait().until( ExpectedConditions.numberOfWindowsToBe(2));
         for(String windowsHandls : getWebDriver().getWindowHandles()) {
             if(!windowsHandls.equals(oldWindowName)){
                 getWebDriver().switchTo().window(windowsHandls);
             }
         }
     }
-    public void switchToWindow(){
+    public void switchToWindow2(){
+        Wait().until( ExpectedConditions.numberOfWindowsToBe(2));
         for(String windowsHandls : getWebDriver().getWindowHandles()) {
         getWebDriver().switchTo().window(windowsHandls);
         }
