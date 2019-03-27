@@ -45,8 +45,7 @@ public class BaseLoginTest {
 
     @AfterClass
     public static void tearDown() {
-        $("#btnProfile").shouldBe(visible).click();
-        $x("//*[@id='userProfile']/div[2]/a[2]").shouldBe(visible).click();
+        close();
         SelenideLogger.removeListener("AllureSelenide");
     }
 
