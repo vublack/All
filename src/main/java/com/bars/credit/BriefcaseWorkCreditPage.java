@@ -1,14 +1,15 @@
 package com.bars.credit;
 
+import com.bars.DBoperation;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -16,7 +17,7 @@ import static org.hamcrest.core.StringContains.containsString;
 
 
 public class BriefcaseWorkCreditPage {
-
+    private DBoperation dBoperation = page(DBoperation.class);
     public static void chooseCredit(String refCredit){
         $x("//*[text()='"+refCredit+"']").shouldBe(visible).click();
     }
@@ -61,4 +62,18 @@ public class BriefcaseWorkCreditPage {
         System.out.println("Графік подій по портфелю" + eventsTimetableList);
     }
 
+/*
+    public void checkOB22forODBacc(DBoperation dBoperation) throws SQLException {
+//        dBoperation.setupDBconection("MMFOM");
+       String OB22forODBacc = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
+       System.out.println("Знач" + OB22forODBacc);
+//        dBoperation.closeConn();
+    }*/
+/*
+    public void checkOB22forODBacc() throws SQLException {
+        dBoperation.setupDBconection("MMFOM");
+        String OB22forODBacc = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
+        System.out.println("Знач" + OB22forODBacc);
+        dBoperation.closeConn();
+    }*/
 }

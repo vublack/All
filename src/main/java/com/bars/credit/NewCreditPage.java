@@ -47,7 +47,7 @@ public class NewCreditPage {
     }
     public void ratesButtonClick(){
         $x("//input[@id='refBaseNameRate']/preceding-sibling::button").shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $x("//th[@data-field='BR_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void typeOfCredit(String creditType){
@@ -62,12 +62,12 @@ public class NewCreditPage {
     }
     public void productOfCredit1(){
         $(byXpath("//input[@id='refProd']/following-sibling::button")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//button[text()='Відмінити']")).shouldBe(visible).click();
     }
     public void productOfCredit2(){
         $(byXpath("//input[@id='refProd']/following-sibling::button")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
 
@@ -98,18 +98,18 @@ public class NewCreditPage {
     public void creditInsurance(){
         $(byXpath("//span[text()='Дод. параметри КД']")).shouldBe(visible).click();
         $(byXpath("(//*[text()='Страхування кредиту']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void s260(){
         $(byXpath("(//*[text()='I_CR9']/following::a[@title='Перейдіть на наступну сторінку'])[1]")).shouldBe(visible).click();
         $(byXpath("(//*[text()='Код iндив.споживання за цiлями S260']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='S260']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void partnerPresent(){
         $(byXpath("(//*[text()='Наявність партнеру(Так/Ні)']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
 
@@ -117,7 +117,7 @@ public class NewCreditPage {
     public void contractStatus(){
         $(byXpath("//span[text()='Бюро Кредит.Історій(Спец)']")).shouldBe(visible).click();
         $(byXpath("(//*[text()='CIG_D13 Статус договору']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
 
@@ -125,12 +125,12 @@ public class NewCreditPage {
     public void creditProduct(){
         $(byXpath("//span[text()='Додаткові']")).shouldBe(visible).click();
         $(byXpath("(//*[text()='Кредитний продукт']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='CPROD_ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBCB(){
         $(byXpath("(//*[text()='EIBCB']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='COLBB_ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBCE(String eibValue){
@@ -143,7 +143,7 @@ public class NewCreditPage {
     }
     public void fillEIBCS(){
         $(byXpath("(//*[text()='EIBCS']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='CUSSEG_ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBCW(String eibValue){
@@ -156,7 +156,7 @@ public class NewCreditPage {
     }
     public void fillEIBIS(){
         $(byXpath("(//*[text()='EIBIS']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBND(String eibValue){
@@ -170,12 +170,12 @@ public class NewCreditPage {
     public void fillEIBPF(){
         $(byXpath("(//*[text()='EIBNE']/following::a[@title='Перейдіть на наступну сторінку'])[1]")).shouldBe(visible).click();
         $(byXpath("(//*[text()='EIBPF']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='PRIFIN_ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBSF(){
         $(byXpath("(//*[text()='EIBSF']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='SECFIN_ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void fillEIBTV(String eibValue){
@@ -187,7 +187,7 @@ public class NewCreditPage {
     public void notary(){
         $(byXpath("//span[text()='Застава']")).shouldBe(visible).click();
         $(byXpath("(//*[text()='ПІБ нотаріуса']/following::a)[1]")).shouldBe(visible).click();
-        switchWindow.switchToWindow();
+        switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
     public void updateParameter(){

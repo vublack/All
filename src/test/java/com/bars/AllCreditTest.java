@@ -8,6 +8,7 @@ import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
+import java.sql.SQLException;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -21,13 +22,31 @@ public class AllCreditTest extends BaseLoginTest {
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
+    private DBoperation dBoperation = page(DBoperation.class);
+    private BriefcaseWorkCreditPage briefcaseWorkCreditPage= new BriefcaseWorkCreditPage();
 
 //    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
+/*
+    @Test
+    public void dbconTest() throws SQLException{
+        loginPage.prof();
+        String base = loginPage.getPolygon();
+        loginPage.prof();
 
+
+        dBoperation.setupDBconection(base);
+        String a = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
+        briefcaseWorkCreditPage.checkOB22forODBacc(dBoperation);
+       System.out.println("asdf" + a);
+        dBoperation.closeConn();
+
+
+    }
+*/
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
@@ -46,7 +65,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdUoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow(briefcaseNewKdUoWindow);
+        switchWindow.forceSwitchToWindow2(briefcaseNewKdUoWindow);
         switchWindow.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
@@ -169,7 +188,7 @@ public class AllCreditTest extends BaseLoginTest {
 
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         String gpkUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
@@ -180,7 +199,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonUo();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
@@ -198,7 +217,7 @@ public class AllCreditTest extends BaseLoginTest {
         BriefcaseWorkCreditPage.chooseCredit("19171634401");
 */
         BriefcaseWorkCreditPage.AccountsUoButton();
-        switchWindow.forceSwitchToWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productuo");
@@ -218,7 +237,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdFoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow(briefcaseNewKdFoWindow);
+        switchWindow.forceSwitchToWindow2(briefcaseNewKdFoWindow);
         switchWindow.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
@@ -289,7 +308,7 @@ public class AllCreditTest extends BaseLoginTest {
         String workCreditFoBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         String gpkFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
@@ -299,7 +318,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonFo();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
@@ -323,7 +342,7 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.AccountsFoButton();
-        switchWindow.forceSwitchToWindow(workCreditFoBriefcaseWindow);
+        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
         switchWindow.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productfo");
@@ -331,5 +350,6 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
 
     }
+
 }
 
