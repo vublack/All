@@ -1,7 +1,7 @@
 package com.bars;
 import java.sql.*;
 
-public class DBconection {
+public class DBoperation {
     Connection conn = null;
     public void setupDBconection (String dbName) throws SQLException {
 //        Задаем параметры подключения: URL, имя пользователя и пароль
@@ -34,28 +34,28 @@ public class DBconection {
             System.out.println("all");
         }
     }
-    public String selectFromDB () {
-        String selectStringValue = "";
+/*
+    public String selectFromDB (String sqlScript, String columnLabel) throws SQLException {
+        String selectStringValue = null;
 
-        try{
-                Statement statement = conn.createStatement();
-
-                ResultSet resultSet = statement.executeQuery("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'");
-                while(resultSet.next()){
-
-                    selectStringValue = resultSet.getString("SD_N");
-                    System.out.println(selectStringValue);
-
-                }
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlScript);
+            while(resultSet.next()){
+                selectStringValue = resultSet.getString(columnLabel);
+                System.out.println(selectStringValue);
             }
+        return selectStringValue;
+    }
+    */
 
-        catch(Exception ex){
-            System.out.println("Connection failed...");
-
-            System.out.println(ex);
+    public String selectFromDB (String sqlScript, String columnLabel) throws SQLException {
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery(sqlScript);
+        String selectStringValue = null;
+        while (resultSet.next()) {
+            selectStringValue = resultSet.getString(columnLabel);
+            System.out.println(selectStringValue);
         }
         return selectStringValue;
     }
-
-
 }

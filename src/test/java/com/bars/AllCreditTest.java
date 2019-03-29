@@ -22,27 +22,31 @@ public class AllCreditTest extends BaseLoginTest {
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
-    private DBconection dBconection = page(DBconection.class);
+    private DBoperation dBoperation = page(DBoperation.class);
+    private BriefcaseWorkCreditPage briefcaseWorkCreditPage= new BriefcaseWorkCreditPage();
 
 //    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
-
+/*
     @Test
     public void dbconTest() throws SQLException{
         loginPage.prof();
         String base = loginPage.getPolygon();
         loginPage.prof();
 
-        dBconection.setupDBconection(base);
-        dBconection.selectFromDB();
 
+        dBoperation.setupDBconection(base);
+        String a = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
+        briefcaseWorkCreditPage.checkOB22forODBacc(dBoperation);
+       System.out.println("asdf" + a);
+        dBoperation.closeConn();
 
-        dBconection.closeConn();
 
     }
+*/
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
