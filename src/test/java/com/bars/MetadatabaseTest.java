@@ -84,6 +84,7 @@ public class MetadatabaseTest extends BaseLoginTest {
         String OverdraftLimWindow = getWebDriver().getWindowHandle();
         $(By.xpath("//*[@class='x-btn-icon-el INSERT ']")).shouldBe(visible).click();
         switchWindow.forceSwitchToWindow2(OverdraftLimWindow);
+        switchWindow.windowMaximize();
         $(By.xpath("//input[@name='X']")).shouldBe(visible).setValue("01.01.2018");
         $(byText("Виконати")).click();
         $(byText("Далі")).click();
