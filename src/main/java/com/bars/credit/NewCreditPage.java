@@ -30,6 +30,9 @@ public class NewCreditPage {
     public void filterInput(String znach){
         $(byXpath("//input[@data-bind='value:filters[0].value']")).shouldBe(visible).setValue(znach).pressEnter();
     }
+    public void filterInput2(String znach){
+        $(byXpath("(//input[@data-bind='value:filters[0].value'])[2]")).shouldBe(visible).setValue(znach).pressEnter();
+    }
     public void filterInputClick(){
         $(byXpath("//div[text()='Рядки із записами']/following-sibling::span[@class='k-widget k-numerictextbox']")).shouldBe(visible).click();
     }
@@ -95,7 +98,7 @@ public class NewCreditPage {
         $(byXpath("//input[@name='dpFirtsPayDate']")).sendKeys(firstDate);
     }
     //Вкладка Дод. параметри КД
-    public void filterByCode(){
+    public void pressFilterByCode(){
         $x("(//th[text()='Код реквізиту']/a)").shouldBe(visible).click();
     }
         //Основні
@@ -105,6 +108,11 @@ public class NewCreditPage {
         switchWindow.switchToWindow2();
         $(byXpath("//th[@data-field='ID']/a[@class='k-grid-filter']")).shouldBe(visible).click();
     }
+    public void marketRate(String marketRate){
+        $("(//*[text()='INTRT']/following::a)[1]").shouldBe(visible).click();
+        $(byXpath("(//*[text()='INTRT']/following::input)[2]")).shouldBe(visible).setValue(marketRate);
+    }
+
     public void s260(){
         $(byXpath("(//*[text()='I_CR9']/following::a[@title='Перейдіть на наступну сторінку'])[1]")).shouldBe(visible).click();
         $(byXpath("(//*[text()='Код iндив.споживання за цiлями S260']/following::a)[1]")).shouldBe(visible).click();

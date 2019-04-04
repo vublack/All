@@ -263,18 +263,29 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
+        if( base.equals("OBMMFOT"))
+        {
+            newCreditPage.pressFilterByCode();
+            newCreditPage.filterInput("INTRT");
+            switchWindow.switchToOldWindow(newKdFoWindow);
+            newCreditPage.marketRate("12");
+            newCreditPage.updateParameter();
+
+        }
+        newCreditPage.pressFilterByCode();
+        newCreditPage.filterInput("PARTN");
         newCreditPage.partnerPresent();
-        newCreditPage.filterInput("NO");
+        newCreditPage.filterInput2("NO");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         newCreditPage.creditProduct();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2");
+        newCreditPage.filterInput2("2");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         newCreditPage.notary();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2134");
+        newCreditPage.filterInput2("2134");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         //Нажимаем на кнопку "Зберігти"
