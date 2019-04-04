@@ -33,6 +33,7 @@ public class NewCreditPage {
     public void filterInputClick(){
         $(byXpath("//div[text()='Рядки із записами']/following-sibling::span[@class='k-widget k-numerictextbox']")).shouldBe(visible).click();
     }
+
     public void okpoRNKchoose(String oKPOchoose, String rNKchoose){
         executeJavaScript("$('#refCust').val(arguments[0])", oKPOchoose);
         executeJavaScript("$('#inptRnk').val(arguments[0])", rNKchoose);
@@ -94,6 +95,9 @@ public class NewCreditPage {
         $(byXpath("//input[@name='dpFirtsPayDate']")).sendKeys(firstDate);
     }
     //Вкладка Дод. параметри КД
+    public void filterByCode(){
+        $x("(//th[text()='Код реквізиту']/a)").shouldBe(visible).click();
+    }
         //Основні
     public void creditInsurance(){
         $(byXpath("//span[text()='Дод. параметри КД']")).shouldBe(visible).click();
