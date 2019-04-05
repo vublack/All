@@ -9,6 +9,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 import java.sql.SQLException;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -267,10 +271,9 @@ public class AllCreditTest extends BaseLoginTest {
         {
             newCreditPage.pressFilterByCode();
             newCreditPage.filterInput("INTRT");
-            switchWindow.switchToOldWindow(newKdFoWindow);
+//            switchWindow.switchToOldWindow(newKdFoWindow);
             newCreditPage.marketRate("12");
             newCreditPage.updateParameter();
-
         }
         newCreditPage.pressFilterByCode();
         newCreditPage.filterInput("PARTN");
