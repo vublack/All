@@ -8,8 +8,6 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.*;
 import org.junit.rules.TestRule;
-
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -35,6 +33,7 @@ public class BaseLoginTest {
         InternetExplorerDriverManager.getInstance(DriverManagerType.IEXPLORER).arch32().setup();
         open("/");
         //Логин
+        loginPage.writePolygon();
         loginPage.fillLoginForm(ConfigProperties.getTestProperty("login"), ConfigProperties.getTestProperty("password"));
         loginPage.goOn();
         switchWindow.switchToMainFrame();

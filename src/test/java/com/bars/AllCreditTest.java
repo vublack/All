@@ -1,4 +1,5 @@
 package com.bars;
+
 import com.bars.credit.AccKdPage;
 import com.bars.credit.BriefcaseNewCreditPage;
 import com.bars.credit.BriefcaseWorkCreditPage;
@@ -8,17 +9,11 @@ import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
-import java.sql.SQLException;
 
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AllCreditTest extends BaseLoginTest {
-    //    private LoginPage loginPage = page(LoginPage.class);
-    private static LoginPage loginPage = new LoginPage();
     private Calculation calculation = page(Calculation.class);
     private NewCreditPage newCreditPage = page(NewCreditPage.class);
     private static SearchPage searchPage = new SearchPage();
@@ -26,10 +21,7 @@ public class AllCreditTest extends BaseLoginTest {
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
-    private DBoperation dBoperation = page(DBoperation.class);
-    private BriefcaseWorkCreditPage briefcaseWorkCreditPage= new BriefcaseWorkCreditPage();
 
-//    private BriefcaseWorkCreditPage briefcaseWorkCreditPage = page(BriefcaseWorkCreditPage.class);
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
@@ -57,9 +49,7 @@ public class AllCreditTest extends BaseLoginTest {
     @Test
     public void creditLegalEntityTest() {
         //Страница поиска
-        loginPage.prof();
-        String base = loginPage.getPolygon();
-
+        String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
         if(base.equals("RCMMFO"))
@@ -88,7 +78,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
 
-        if( base.equals("MMFOT")|| base.equals("OBMMFOT1"))
+        if( base.equals("OBMMFOT")|| base.equals("OBMMFOT1"))
         {
 //            newCreditPage.chooseGKD("Ні");
             newCreditPage.chooseGKD();
@@ -229,9 +219,9 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void kreditFoTest() {
-//        open("/");
-        loginPage.prof();
-        String base = loginPage.getPolygon();
+
+        String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
+        System.out.println(base);
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "$RM_WCCK");
         switchWindow.switchToMainFrame();
         //Кнопка Новый КД(переключение на окно Нового КД)
@@ -263,6 +253,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("NO");
         switchWindow.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
+
         if( base.equals("OBMMFOT"))
         {
             newCreditPage.pressFilterByCode();

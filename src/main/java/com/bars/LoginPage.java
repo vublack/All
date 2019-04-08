@@ -6,11 +6,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 
 class LoginPage {
-    public void prof(){
-        $("#btnProfile").shouldBe(visible).click();}
-
-    public String getPolygon() {
-        return $x("(//*[text()='База даних:']/following::span)[1]").shouldBe(visible).getText();}
+    public void writePolygon(){
+        String name = $x ( "//h2" ).shouldBe ( visible ).getText ( );
+        WritingToFile.Filewriting( "Polygon.txt", name);
+    }
     void fillLoginForm(String login, String password) {
         $("#txtUserName").setValue(login);
         $("#txtPassword").setValue(password).pressEnter();

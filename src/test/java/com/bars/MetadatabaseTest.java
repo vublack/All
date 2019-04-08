@@ -16,7 +16,6 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class MetadatabaseTest extends BaseLoginTest {
-    private static LoginPage loginPage = new LoginPage();
     private static SearchPage searchPage = new SearchPage();
     private static SwitchWindow switchWindow = new SwitchWindow();
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
@@ -29,7 +28,6 @@ public class MetadatabaseTest extends BaseLoginTest {
 //   @Ignore
     @Test
     public void bmdFilterBefor(){
-//        open("/");
         searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
         switchWindow.switchToMainFrame();
         //Робота з фільтром
@@ -43,14 +41,11 @@ public class MetadatabaseTest extends BaseLoginTest {
         filterBeforFillingTable.userFilterTab();
         filterBeforFillingTable.chooseUserFilter("564");
         filterBeforFillingTable.deleteUserFilter();
-//        switchWindow.switchToDefaultContent();
     }
 
 //    @Ignore
     @Test
     public void bmdRows() {
-//        open("/");
-
         //Страница поиска
         searchPage.searchFunction("FOREX. Довідник спецпараметрів рахунків", "$RM_WFRX");
         switchWindow.switchToMainFrame();
@@ -69,13 +64,11 @@ public class MetadatabaseTest extends BaseLoginTest {
 
         //!!!!Довідник спецпараметрів!!!!-!!!!Видалення рядка!!!!
         bmdActionsWithRow.DelRow("98A");
-//        switchWindow.switchToDefaultContent();
         }
 
 //    @Ignore
     @Test
     public void bmdChko()  {
-//        open("/");
         //Страница поиска
         searchPage.searchFunction("Ліміти.", "$RM_OVRW");
         switchWindow.switchToMainFrame();
@@ -94,7 +87,6 @@ public class MetadatabaseTest extends BaseLoginTest {
         System.out.println("Ркзультат: " + Result);
         switchWindow.closeWindow(netCreditTurnover );
         switchWindow.switchToOldWindow(OverdraftLimWindow);
-//        switchWindow.switchToDefaultContent();
      }
 }
 
