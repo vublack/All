@@ -51,6 +51,8 @@ public class AllCreditTest extends BaseLoginTest {
 
     }
 */
+
+
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
@@ -172,8 +174,9 @@ public class AllCreditTest extends BaseLoginTest {
 
 
  /*
-        String numSum = "449";
-        String firstPaymentDate = "01/08/2018";
+        String numSum = "244";
+        String firstPaymentDate = "28/02/2019";
+        String newCreditRefFo = "19171724401";
  */
 
         //Портфель Робочих КД ФО
@@ -182,10 +185,6 @@ public class AllCreditTest extends BaseLoginTest {
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefUo, "ND");
-
-/*
-        filterBeforFillingTable.setUserFilter("19171634401", "ND");
-*/
         filterBeforFillingTable.furtherButtonClick();
 //Портфель Робочих кредитів(Побудава ГПК та Графіку подій по портфелю)
         String workCreditOfLegalEntityBriefcaseWindow = getWebDriver().getWindowHandle();
@@ -211,15 +210,12 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, 72);
+        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
         switchWindow.closeWindow(EventsTimetableUoWindow);
         switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
         switchWindow.switchToMainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
-/*
-        BriefcaseWorkCreditPage.chooseCredit("19171634401");
-*/
         BriefcaseWorkCreditPage.AccountsUoButton();
         switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
         switchWindow.windowMaximize();
@@ -271,7 +267,6 @@ public class AllCreditTest extends BaseLoginTest {
         {
             newCreditPage.pressFilterByCode();
             newCreditPage.filterInput("INTRT");
-//            switchWindow.switchToOldWindow(newKdFoWindow);
             newCreditPage.marketRate("12");
             newCreditPage.updateParameter();
         }
@@ -307,8 +302,9 @@ public class AllCreditTest extends BaseLoginTest {
 
 
 /*
-        String numSum = "449";
-        String firstPaymentDate = "01/08/2018";
+        String numSum = "244";
+        String firstPaymentDate = "28/02/2019";
+        String newCreditRefFo = "19171724401";
 */
 
         //Портфель Робочих КД ФО
@@ -340,16 +336,7 @@ public class AllCreditTest extends BaseLoginTest {
         filterBeforFillingTable.furtherButtonClick();
         String EventsTimetableFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
-        String auTipe = ConfigProperties.getTestProperty("autorizationtype");
-        if( base.equals("OBMMFOT") || auTipe.equals("1") || base.equals("OBMMFOT1") )
-        {
-            int sizeCollection = 72;
-            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
-        else {
-            int sizeCollection = 54;
-            BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum, sizeCollection);
-        }
+        BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
         switchWindow.closeWindow(EventsTimetableFoWindow);
         switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)

@@ -1,6 +1,7 @@
 package com.bars.credit;
 
 import com.bars.DBoperation;
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
 
@@ -55,11 +56,12 @@ public class BriefcaseWorkCreditPage {
     public static void progressBar(){
         $x("//*[@class = 'x-mask-msg-text']").shouldNotBe(visible);
     }
-    public static void checkEventsTimetableOfBriefcase(String expectedNum, int size){
-        List<SelenideElement> eventsTimetable = $$x("//div[@class='x-grid-cell-inner ']").filter(visible).shouldHaveSize(size);
+
+    public static void checkEventsTimetableOfBriefcase(String expectedNum){
+        $$x("//div[@class='x-grid-cell-inner ']").filter(visible).shouldHave(CollectionCondition.sizeGreaterThan(50));
+        List<SelenideElement> eventsTimetable = $$x("//div[@class='x-grid-cell-inner ']").filter(visible).shouldHave(CollectionCondition.sizeGreaterThan(50));
         List<String> eventsTimetableList = eventsTimetable.stream().map(WebElement::getText).collect(Collectors.toList());
         assertThat("None of elements contains sub-string", eventsTimetableList, hasItem(containsString(expectedNum)));
-        System.out.println("Графік подій по портфелю" + eventsTimetableList);
     }
 
 /*
