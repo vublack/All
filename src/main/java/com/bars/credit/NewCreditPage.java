@@ -1,6 +1,6 @@
 package com.bars.credit;
 
-import com.bars.SwitchWindow;
+import com.bars.GeneralСlasses.SwitchWindow;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 

@@ -1,11 +1,10 @@
 package com.bars.credit;
 
-import com.bars.DBoperation;
+import com.bars.HelperClasses.DBoperation;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 

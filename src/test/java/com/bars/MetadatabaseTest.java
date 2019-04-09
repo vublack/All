@@ -1,5 +1,8 @@
 package com.bars;
 
+import com.bars.GeneralСlasses.FilterBeforFillingTable;
+import com.bars.GeneralСlasses.SearchPage;
+import com.bars.GeneralСlasses.SwitchWindow;
 import com.bars.bmd.BmdActionsWithRow;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.junit.ScreenShooter;

@@ -1,9 +1,9 @@
-package com.bars;
+package com.bars.HelperClasses;
 
 import java.util.Random;
 
-class Calculation {
-    String randomNum(){
+public class Calculation {
+    public String randomNum(){
         //Вставка рандомного числа
         Random random = new Random();
         int number = random.nextInt(899)+100;

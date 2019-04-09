@@ -1,4 +1,4 @@
-package com.bars;
+package com.bars.GeneralСlasses;
 
 
 import org.openqa.selenium.By;
@@ -12,17 +12,13 @@ public class SearchPage {
         $(By.tagName("h1")).shouldHave(text("Оголошення"));
     }
 
-    void searchFunction(String functionName, String functionCode) {
+    public void searchFunction(String functionName, String functionCode) {
         $("#findOpersText").shouldBe(visible).setValue(functionName).pressEnter();
         $x("//div[@id='resultSearch']/descendant::div[@data-codeapp='"+functionCode+"']").shouldBe(visible).click();
-
-        //        String Opername = String.format("//*[@class='oper-name']/span[text()='%s']", functionName);
-//        $x(Opername).shouldBe(visible).click();
     }
-    void chooseBranch(){
+    public void chooseBranch(){
         $(".btn_branches").shouldBe(visible).click();
         $x("//div[@id='treeview']/ul/li/ul/li/div/span[2]/span").shouldBe(visible).shouldHave(text("300465")).click();
         getWebDriver().navigate().refresh();
     }
 }
-//div[@id='resultSearch']/descendant::div[@data-codeapp='$RM_WFRX']

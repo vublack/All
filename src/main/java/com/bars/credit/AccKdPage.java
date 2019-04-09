@@ -1,6 +1,6 @@
 package com.bars.credit;
 
-import com.bars.ConfigProperties;
+import com.bars.HelperClasses.ConfigProperties;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;

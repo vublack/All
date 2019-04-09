@@ -1,32 +1,32 @@
-package com.bars;
+package com.bars.GeneralСlasses;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-class FilterBeforFillingTable {
-    void clearFilter(){
+public class FilterBeforFillingTable {
+    public void clearFilter(){
         $x("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='Скасувати фільтри']").shouldBe(visible).click();
     }
-    void setUserFilter(String creditREF, String tagName){
+    public void setUserFilter(String creditREF, String tagName){
         $x("(//*[@class='x-tab-inner x-tab-inner-center'])[text()='Звичайні']").shouldBe(visible).click();
         $x("//input[@name='"+tagName+"']").shouldBe(visible).setValue(creditREF);
     }
-    void saveUserFilter(String filterName){
+    public void saveUserFilter(String filterName){
         $x("(//*[@class='x-btn-icon-el save_brown '])[2]").shouldBe(visible).click();
         $x("//*[@name='filterName']").shouldBe(visible).setValue(filterName);
         $x("(//*[text()='Зберегти']/following-sibling::*[@class='x-btn-icon-el save '])[2]").shouldBe(visible).click();
         $x("//*[text()='Фільтр успішно додано']/following::*[text()='OK']").shouldBe(visible).click();
     }
-    void userFilterTab(){
+    public void userFilterTab(){
         $x("(//*[@class='x-tab-inner x-tab-inner-center'])[text()='Користувача']").shouldBe(visible).click();
     }
-    void chooseUserFilter(String cooseRowByFilterName){
+    public void chooseUserFilter(String cooseRowByFilterName){
         $x("(//*[@class='x-grid-cell-inner '])[text()='"+cooseRowByFilterName+"']").shouldBe(visible).click();
     }
-    void editButton(){
+    public void editButton(){
         $x("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='редагувати фільтр']").shouldBe(visible).click();
     }
-    void editUserFilter(String filterValue){
+    public void editUserFilter(String filterValue){
         $x("(//*[@class='x-grid-cell-inner '])[text()='=']").shouldBe(visible).click();
         $x("//*[text()='=']/following::*[@class ='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first']").shouldBe(visible).click();
         $x("//li[text()='СХОЖИЙ']").shouldBe(visible).click();
@@ -42,13 +42,13 @@ class FilterBeforFillingTable {
         value.click();
         value.sendKeys("qewr");*/
     }
-    void deleteUserFilter(){
+    public void deleteUserFilter(){
         $x("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='Видалити']").shouldBe(visible).click();
         $x("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='Так']").shouldBe(visible).click();
         $x("//*[text()='Рядок успішно видалено']").shouldBe(visible).click();
         $x("//*[@class='x-tool x-box-item x-tool-default x-tool-before-title']").shouldBe(visible).click();
     }
-    void furtherButtonClick(){
+    public void furtherButtonClick(){
         $x("(//*[@class='x-btn-inner x-btn-inner-center'])[text()='Далі']").shouldBe(visible).click();
     }
 }

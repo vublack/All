@@ -1,4 +1,5 @@
-package com.bars;
+package com.bars.HelperClasses;
+
 import java.sql.*;
 
 public class DBoperation {

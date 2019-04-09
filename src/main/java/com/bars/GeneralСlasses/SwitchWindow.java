@@ -1,4 +1,4 @@
-package com.bars;
+package com.bars.GeneralСlasses;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

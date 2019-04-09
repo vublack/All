@@ -1,5 +1,11 @@
 package com.bars;
 
+import com.bars.GeneralСlasses.SearchPage;
+import com.bars.GeneralСlasses.SwitchWindow;
+import com.bars.HelperClasses.Calculation;
+import com.bars.HelperClasses.ConfigProperties;
+import com.bars.GeneralСlasses.FilterBeforFillingTable;
+import com.bars.HelperClasses.ReadingFromFile;
 import com.bars.credit.AccKdPage;
 import com.bars.credit.BriefcaseNewCreditPage;
 import com.bars.credit.BriefcaseWorkCreditPage;

@@ -1,4 +1,4 @@
-package com.bars;
+package com.bars.HelperClasses;
 
 import java.io.FileWriter;
 import java.io.IOException;

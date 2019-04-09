@@ -1,5 +1,9 @@
 package com.bars;
 
+import com.bars.GeneralСlasses.LoginPage;
+import com.bars.GeneralСlasses.SearchPage;
+import com.bars.GeneralСlasses.SwitchWindow;
+import com.bars.HelperClasses.ConfigProperties;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import com.codeborne.selenide.logevents.SelenideLogger;
