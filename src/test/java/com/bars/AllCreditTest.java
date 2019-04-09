@@ -77,13 +77,14 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindow.switchToOldWindow(newKdUoWindow);
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
+/*
 
         if( base.equals("OBMMFOT")|| base.equals("OBMMFOT1"))
         {
-//            newCreditPage.chooseGKD("Ні");
             newCreditPage.chooseGKD();
         }
 
+*/
         //Вкладка Дані про погашення
         String firstPaymentDate = newCreditPage.getConclusionDate();
         newCreditPage.firstPaymentDate(firstPaymentDate);
