@@ -4,6 +4,7 @@ import com.bars.GeneralСlasses.LoginPage;
 import com.bars.GeneralСlasses.SearchPage;
 import com.bars.GeneralСlasses.SwitchWindow;
 import com.bars.HelperClasses.ConfigProperties;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -12,8 +13,10 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.*;
 import org.junit.rules.TestRule;
+
 import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class BaseLoginTest {

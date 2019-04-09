@@ -7,7 +7,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class SwitchWindow {
     public void forceSwitchToWindow2(String oldWindowName){
-        Wait().until( ExpectedConditions.numberOfWindowsToBe(2));
         for(String windowsHandls : getWebDriver().getWindowHandles()) {
             if(!windowsHandls.equals(oldWindowName)){
                 getWebDriver().switchTo().window(windowsHandls);
@@ -15,7 +14,7 @@ public class SwitchWindow {
         }
     }
     public void switchToWindow2(){
-        Wait().until( ExpectedConditions.numberOfWindowsToBe(2));
+//        Wait().until( ExpectedConditions.numberOfWindowsToBe(2));
         for(String windowsHandls : getWebDriver().getWindowHandles()) {
         getWebDriver().switchTo().window(windowsHandls);
         }
