@@ -3,6 +3,7 @@ package com.bars;
 import com.bars.GeneralСlasses.FilterBeforFillingTable;
 import com.bars.GeneralСlasses.SearchPage;
 import com.bars.GeneralСlasses.SwitchWindow;
+import com.bars.HelperClasses.ReadingFromFile;
 import com.bars.bmd.BmdActionsWithRow;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.junit.ScreenShooter;
@@ -73,6 +74,7 @@ public class MetadatabaseTest extends BaseLoginTest {
     @Test
     public void bmdChko()  {
         //Страница поиска
+        String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         searchPage.searchFunction("Ліміти.", "$RM_OVRW");
         switchWindow.switchToMainFrame();
 
@@ -86,8 +88,15 @@ public class MetadatabaseTest extends BaseLoginTest {
         $(byText("Далі")).click();
         String netCreditTurnover = getWebDriver().getWindowHandle();
         $$(By.xpath("//*[@class='x-grid-cell-inner ']")).shouldBe(CollectionCondition.sizeGreaterThanOrEqual(12));
-        String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("41")).getText();
-        System.out.println("Ркзультат: " + Result);
+        if( base.equals("OBMMFOT")) {
+            String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("0")).getText();
+            System.out.println("Ркзультат: " + Result);
+        }
+        else {
+            String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("41")).getText();
+            System.out.println("Ркзультат: " + Result);
+        }
+
         switchWindow.closeWindow(netCreditTurnover );
         switchWindow.switchToOldWindow(OverdraftLimWindow);
      }
