@@ -1,6 +1,6 @@
-package com.bars.GeneralСlasses;
+package com.bars.generalСlasses;
 
-import com.bars.HelperClasses.WritingToFile;
+import com.bars.helperClasses.WritingToFile;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;

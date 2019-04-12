@@ -1,4 +1,4 @@
-package com.bars.GeneralСlasses;
+package com.bars.generalСlasses;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;

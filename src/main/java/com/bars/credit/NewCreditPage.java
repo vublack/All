@@ -1,6 +1,6 @@
 package com.bars.credit;
 
-import com.bars.GeneralСlasses.SwitchWindow;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class NewCreditPage {
-    private SwitchWindow switchWindow = page(SwitchWindow.class);
+    private SwitchWindowOrFrame switchWindowOrFrame = page(SwitchWindowOrFrame.class);
 
             // Вкладка Параметри КД
     public void fillNumSum(String num, String sum){
@@ -50,7 +50,7 @@ public class NewCreditPage {
     }
     public void ratesButtonClick(){
         $x("//input[@id='refBaseNameRate']/preceding-sibling::button").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='BR_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void typeOfCredit(String creditType){
@@ -65,12 +65,12 @@ public class NewCreditPage {
     }
     public void productOfCredit1(){
         $x("//input[@id='refProd']/following-sibling::button").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//button[text()='Відмінити']").shouldBe(visible).click();
     }
     public void productOfCredit2(){
         $x("//input[@id='refProd']/following-sibling::button").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
 
@@ -104,7 +104,7 @@ public class NewCreditPage {
     public void creditInsurance(){
         $x("//span[text()='Дод. параметри КД']").shouldBe(visible).click();
         $x("(//*[text()='Страхування кредиту']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void marketRate(String marketRate){
@@ -115,12 +115,12 @@ public class NewCreditPage {
     public void s260(){
         $x("(//*[text()='I_CR9']/following::a[@title='Перейдіть на наступну сторінку'])[1]").shouldBe(visible).click();
         $x("(//*[text()='Код iндив.споживання за цiлями S260']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='S260']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void partnerPresent(){
         $x("(//*[text()='Наявність партнеру(Так/Ні)']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
 
@@ -128,7 +128,7 @@ public class NewCreditPage {
     public void contractStatus(){
         $x("//span[text()='Бюро Кредит.Історій(Спец)']").shouldBe(visible).click();
         $x("(//*[text()='CIG_D13 Статус договору']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
 
@@ -136,12 +136,12 @@ public class NewCreditPage {
     public void creditProduct(){
         $x("//span[text()='Додаткові']").shouldBe(visible).click();
         $x("(//*[text()='Кредитний продукт']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='CPROD_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBCB(){
         $x("(//*[text()='EIBCB']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='COLBB_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBCE(String eibValue){
@@ -154,7 +154,7 @@ public class NewCreditPage {
     }
     public void fillEIBCS(){
         $x("(//*[text()='EIBCS']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='CUSSEG_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBCW(String eibValue){
@@ -167,7 +167,7 @@ public class NewCreditPage {
     }
     public void fillEIBIS(){
         $x("(//*[text()='EIBIS']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBND(String eibValue){
@@ -181,12 +181,12 @@ public class NewCreditPage {
     public void fillEIBPF(){
         $x("(//*[text()='EIBNE']/following::a[@title='Перейдіть на наступну сторінку'])[1]").shouldBe(visible).click();
         $x("(//*[text()='EIBPF']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='PRIFIN_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBSF(){
         $x("(//*[text()='EIBSF']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='SECFIN_ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void fillEIBTV(String eibValue){
@@ -198,7 +198,7 @@ public class NewCreditPage {
     public void notary(){
         $x("//span[text()='Застава']").shouldBe(visible).click();
         $x("(//*[text()='ПІБ нотаріуса']/following::a)[1]").shouldBe(visible).click();
-        switchWindow.switchToWindow2();
+        switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
     public void updateParameter(){

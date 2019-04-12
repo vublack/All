@@ -1,11 +1,11 @@
 package com.bars;
 
-import com.bars.GeneralСlasses.SearchPage;
-import com.bars.GeneralСlasses.SwitchWindow;
-import com.bars.HelperClasses.Calculation;
-import com.bars.HelperClasses.ConfigProperties;
-import com.bars.GeneralСlasses.FilterBeforFillingTable;
-import com.bars.HelperClasses.ReadingFromFile;
+import com.bars.generalСlasses.SearchPage;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
+import com.bars.helperClasses.Calculation;
+import com.bars.helperClasses.ConfigProperties;
+import com.bars.generalСlasses.FilterBeforFillingTable;
+import com.bars.helperClasses.ReadingFromFile;
 import com.bars.credit.AccKdPage;
 import com.bars.credit.BriefcaseNewCreditPage;
 import com.bars.credit.BriefcaseWorkCreditPage;
@@ -23,7 +23,7 @@ public class AllCreditTest extends BaseLoginTest {
     private Calculation calculation = page(Calculation.class);
     private NewCreditPage newCreditPage = page(NewCreditPage.class);
     private static SearchPage searchPage = new SearchPage();
-    private static SwitchWindow switchWindow = new SwitchWindow();
+    private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
@@ -56,8 +56,7 @@ public class AllCreditTest extends BaseLoginTest {
     public void creditLegalEntityTest() {
         //Страница поиска
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
-        searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "$RM_UCCK");
-        switchWindow.switchToMainFrame();
+        searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "1818");
         if(base.equals("RCMMFO"))
         {
             //Робота з фільтром
@@ -67,8 +66,8 @@ public class AllCreditTest extends BaseLoginTest {
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdUoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow2(briefcaseNewKdUoWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(briefcaseNewKdUoWindow);
+        switchWindowOrFrame.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
         String newKdUoWindow = getWebDriver().getWindowHandle();
@@ -80,7 +79,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
         newCreditPage.productOfCredit1();
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
 /*
@@ -97,26 +96,26 @@ public class AllCreditTest extends BaseLoginTest {
         //Вкладка Дод. параметри КД
         newCreditPage.creditInsurance();
         newCreditPage.filterInput("NO");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.s260();
         newCreditPage.filterInput("01");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.contractStatus();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("0");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.creditProduct();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("2");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCB();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("2");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCE("33");
         newCreditPage.updateParameter();
@@ -125,7 +124,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillEIBCS();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("2");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCW("33");
         newCreditPage.updateParameter();
@@ -133,7 +132,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.updateParameter();
         newCreditPage.fillEIBIS();
         newCreditPage.filterInput("NO");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBND("33 тест");
         newCreditPage.updateParameter();
@@ -142,32 +141,32 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillEIBPF();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("1");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBSF();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("1");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBTV("33");
         newCreditPage.updateParameter();
         newCreditPage.notary();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("2134");
-        switchWindow.switchToOldWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         //Нажимаем на кнопку "Зберігти"
         newCreditPage.saveButtonClick();
         newCreditPage.confirmOfCreditCreate();
         String newCreditRefUo = newCreditPage.getREF();
-        switchWindow.closeWindow(newKdUoWindow);
-        switchWindow.switchToOldWindow(briefcaseNewKdUoWindow);
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.closeWindow(newKdUoWindow);
+        switchWindowOrFrame.switchToOldWindow(briefcaseNewKdUoWindow);
+        switchWindowOrFrame.mainFrame();
         briefcaseNewCreditPage.pressRefreshBriefcase();
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
-        switchWindow.switchToDefaultContent();
+        switchWindowOrFrame.defaultContent();
 
 
  /*
@@ -177,8 +176,7 @@ public class AllCreditTest extends BaseLoginTest {
  */
 
         //Портфель Робочих КД ФО
-        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
-        switchWindow.switchToMainFrame();
+        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "1819");
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefUo, "ND");
@@ -188,19 +186,19 @@ public class AllCreditTest extends BaseLoginTest {
 
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         String gpkUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
         BriefcaseWorkCreditPage.matchingSumInGpkUo(numSum+".00");
-        switchWindow.closeWindow(gpkUoWindow);
+        switchWindowOrFrame.closeWindow(gpkUoWindow);
 
-        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.mainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonUo();
-        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefUo, "ND");
@@ -208,18 +206,18 @@ public class AllCreditTest extends BaseLoginTest {
         String EventsTimetableUoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
         BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
-        switchWindow.closeWindow(EventsTimetableUoWindow);
-        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.closeWindow(EventsTimetableUoWindow);
+        switchWindowOrFrame.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.mainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
         BriefcaseWorkCreditPage.AccountsUoButton();
-        switchWindow.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productuo");
-        switchWindow.closeWindow(accKdUOwindow);
-        switchWindow.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
+        switchWindowOrFrame.closeWindow(accKdUOwindow);
+        switchWindowOrFrame.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
 
 
     }
@@ -229,13 +227,12 @@ public class AllCreditTest extends BaseLoginTest {
 
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         System.out.println(base);
-        searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "$RM_WCCK");
-        switchWindow.switchToMainFrame();
+        searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "1816");
         //Кнопка Новый КД(переключение на окно Нового КД)
         String briefcaseNewKdFoWindow = getWebDriver().getWindowHandle();
         briefcaseNewCreditPage.pressCreateNewKD();
-        switchWindow.forceSwitchToWindow2(briefcaseNewKdFoWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(briefcaseNewKdFoWindow);
+        switchWindowOrFrame.windowMaximize();
         // !!Заполнение полей КД!!
         // Вкладка Параметри КД
         String newKdFoWindow = getWebDriver().getWindowHandle();
@@ -249,7 +246,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.typeOfCredit("ФЛ стандарт");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
         newCreditPage.productOfCredit1();
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productfo"));
         //Вкладка Дані про погашення
@@ -258,7 +255,7 @@ public class AllCreditTest extends BaseLoginTest {
         //Вкладка Дод. параметри КД
         newCreditPage.creditInsurance();
         newCreditPage.filterInput("NO");
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
 
         if( base.equals("OBMMFOT"))
@@ -272,31 +269,31 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.filterInput("PARTN");
         newCreditPage.partnerPresent();
         newCreditPage.filterInput2("NO");
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         newCreditPage.creditProduct();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput2("2");
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         newCreditPage.notary();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput2("2134");
-        switchWindow.switchToOldWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
         //Нажимаем на кнопку "Зберігти"
         newCreditPage.saveButtonClick();
         newCreditPage.confirmOfCreditCreate();
         String newCreditRefFo = newCreditPage.getREF();
         System.out.println(newCreditRefFo);
-        switchWindow.closeWindow(newKdFoWindow);
-        switchWindow.switchToOldWindow(briefcaseNewKdFoWindow);
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.closeWindow(newKdFoWindow);
+        switchWindowOrFrame.switchToOldWindow(briefcaseNewKdFoWindow);
+        switchWindowOrFrame.mainFrame();
         briefcaseNewCreditPage.pressRefreshBriefcase();
         //Авторизація
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         briefcaseNewCreditPage.creditAuthorization(ConfigProperties.getTestProperty("autorizationtype"));
-        switchWindow.switchToDefaultContent();
+        switchWindowOrFrame.defaultContent();
 
 
 /*
@@ -306,8 +303,7 @@ public class AllCreditTest extends BaseLoginTest {
 */
 
         //Портфель Робочих КД ФО
-        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ФО", "$RM_WCCK");
-        switchWindow.switchToMainFrame();
+        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ФО", "1585");
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefFo, "ND");
@@ -316,18 +312,18 @@ public class AllCreditTest extends BaseLoginTest {
         String workCreditFoBriefcaseWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.buildRepaymentSchedule();
-        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         String gpkFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.getTableName();
         BriefcaseWorkCreditPage.matchingSumInGpkFo(numSum+".00");
-        switchWindow.closeWindow(gpkFoWindow);
-        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.closeWindow(gpkFoWindow);
+        switchWindowOrFrame.switchToOldWindow(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.mainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.eventsTimetableOfBriefcaseButtonFo();
-        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         BriefcaseWorkCreditPage.chooseInterval(firstPaymentDate);
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter(newCreditRefFo, "ND");
@@ -335,18 +331,18 @@ public class AllCreditTest extends BaseLoginTest {
         String EventsTimetableFoWindow = getWebDriver().getWindowHandle();
         BriefcaseWorkCreditPage.progressBar();
         BriefcaseWorkCreditPage.checkEventsTimetableOfBriefcase(numSum);
-        switchWindow.closeWindow(EventsTimetableFoWindow);
-        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.closeWindow(EventsTimetableFoWindow);
+        switchWindowOrFrame.switchToOldWindow(workCreditFoBriefcaseWindow);
 //Портфель Робочих кредитів(Перевірка відкриття рахунку SS)
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.mainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefFo);
         BriefcaseWorkCreditPage.AccountsFoButton();
-        switchWindow.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.windowMaximize();
         String accKdUOwindow = getWebDriver().getWindowHandle();
         accKdPage.checkAccSSopening("productfo");
-        switchWindow.closeWindow(accKdUOwindow);
-        switchWindow.switchToOldWindow(workCreditFoBriefcaseWindow);
+        switchWindowOrFrame.closeWindow(accKdUOwindow);
+        switchWindowOrFrame.switchToOldWindow(workCreditFoBriefcaseWindow);
 
     }
 
