@@ -1,10 +1,9 @@
 package com.bars;
 
-import com.bars.GeneralСlasses.LoginPage;
-import com.bars.GeneralСlasses.SearchPage;
-import com.bars.GeneralСlasses.SwitchWindow;
-import com.bars.HelperClasses.ConfigProperties;
-import com.codeborne.selenide.WebDriverRunner;
+import com.bars.generalСlasses.LoginPage;
+import com.bars.generalСlasses.SearchPage;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
+import com.bars.helperClasses.ConfigProperties;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -22,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class BaseLoginTest {
     private static LoginPage loginPage = new LoginPage();
     private static SearchPage searchPage = new SearchPage();
-    private static SwitchWindow switchWindow = new SwitchWindow();
+    private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
@@ -43,9 +42,9 @@ public class BaseLoginTest {
         loginPage.writePolygon();
         loginPage.fillLoginForm(ConfigProperties.getTestProperty("login"), ConfigProperties.getTestProperty("password"));
         loginPage.goOn();
-        switchWindow.switchToMainFrame();
+        switchWindowOrFrame.mainFrame();
         searchPage.h1();
-        switchWindow.switchToDefaultContent();
+        switchWindowOrFrame.defaultContent();
         searchPage.chooseBranch();
     }
 
@@ -62,7 +61,7 @@ public class BaseLoginTest {
 
     @After
     public void afterMethod() {
-        switchWindow.switchToDefaultContent();
+        switchWindowOrFrame.defaultContent();
     }
 
 

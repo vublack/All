@@ -1,10 +1,10 @@
 package com.bars;
 
-import com.bars.GeneralСlasses.FilterBeforFillingTable;
-import com.bars.GeneralСlasses.SearchPage;
-import com.bars.GeneralСlasses.SwitchWindow;
-import com.bars.HelperClasses.ReadingFromFile;
+import com.bars.generalСlasses.FilterBeforFillingTable;
+import com.bars.generalСlasses.SearchPage;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.bars.bmd.BmdActionsWithRow;
+import com.bars.helperClasses.ReadingFromFile;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
@@ -21,7 +21,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class MetadatabaseTest extends BaseLoginTest {
     private static SearchPage searchPage = new SearchPage();
-    private static SwitchWindow switchWindow = new SwitchWindow();
+    private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private BmdActionsWithRow bmdActionsWithRow = page(BmdActionsWithRow.class);
     @Rule
@@ -32,8 +32,7 @@ public class MetadatabaseTest extends BaseLoginTest {
 //   @Ignore
     @Test
     public void bmdFilterBefor(){
-        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "$RM_UCCK");
-        switchWindow.switchToMainFrame();
+        searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "1819");
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.setUserFilter("564", "ND");
@@ -51,9 +50,7 @@ public class MetadatabaseTest extends BaseLoginTest {
     @Test
     public void bmdRows() {
         //Страница поиска
-        searchPage.searchFunction("FOREX. Довідник спецпараметрів рахунків", "$RM_WFRX");
-        switchWindow.switchToMainFrame();
-
+        searchPage.searchFunction("FOREX. Довідник спецпараметрів рахунків", "1679");
             //Робота з фільтром
         filterBeforFillingTable.clearFilter();
         filterBeforFillingTable.furtherButtonClick();
@@ -75,14 +72,12 @@ public class MetadatabaseTest extends BaseLoginTest {
     public void bmdChko()  {
         //Страница поиска
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
-        searchPage.searchFunction("Ліміти.", "$RM_OVRW");
-        switchWindow.switchToMainFrame();
-
+        searchPage.searchFunction("Ліміти.", "1773");
         $(By.xpath("(//*[@class='x-grid-cell-inner x-grid-cell-inner-row-numberer'])[text()='2']")).shouldBe(visible).click();
         String OverdraftLimWindow = getWebDriver().getWindowHandle();
         $(By.xpath("//*[@class='x-btn-icon-el INSERT ']")).shouldBe(visible).click();
-        switchWindow.forceSwitchToWindow2(OverdraftLimWindow);
-        switchWindow.windowMaximize();
+        switchWindowOrFrame.forceSwitchToWindow2(OverdraftLimWindow);
+        switchWindowOrFrame.windowMaximize();
         $(By.xpath("//input[@name='X']")).shouldBe(visible).setValue("01.01.2018");
         $(byText("Виконати")).click();
         $(byText("Далі")).click();
@@ -96,9 +91,8 @@ public class MetadatabaseTest extends BaseLoginTest {
             String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("41")).getText();
             System.out.println("Ркзультат: " + Result);
         }
-
-        switchWindow.closeWindow(netCreditTurnover );
-        switchWindow.switchToOldWindow(OverdraftLimWindow);
+        switchWindowOrFrame.closeWindow(netCreditTurnover );
+        switchWindowOrFrame.switchToOldWindow(OverdraftLimWindow);
      }
 }
 

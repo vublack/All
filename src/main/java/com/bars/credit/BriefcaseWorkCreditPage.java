@@ -1,6 +1,6 @@
 package com.bars.credit;
 
-import com.bars.HelperClasses.DBoperation;
+import com.bars.helperClasses.DBoperation;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
