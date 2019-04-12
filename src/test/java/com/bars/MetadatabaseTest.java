@@ -1,16 +1,12 @@
 package com.bars;
 
+import com.bars.bmd.BmdActionsWithRow;
 import com.bars.generalСlasses.FilterBeforFillingTable;
 import com.bars.generalСlasses.SearchPage;
 import com.bars.generalСlasses.SwitchWindowOrFrame;
-import com.bars.bmd.BmdActionsWithRow;
 import com.bars.helperClasses.ReadingFromFile;
 import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.junit.ScreenShooter;
-import com.codeborne.selenide.junit.TextReport;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestRule;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -24,10 +20,7 @@ public class MetadatabaseTest extends BaseLoginTest {
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private BmdActionsWithRow bmdActionsWithRow = page(BmdActionsWithRow.class);
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
-    @Rule
-    public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
+
 
 //   @Ignore
     @Test

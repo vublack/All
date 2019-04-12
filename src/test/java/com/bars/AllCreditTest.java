@@ -1,20 +1,16 @@
 package com.bars;
 
-import com.bars.generalСlasses.SearchPage;
-import com.bars.generalСlasses.SwitchWindowOrFrame;
-import com.bars.helperClasses.Calculation;
-import com.bars.helperClasses.ConfigProperties;
-import com.bars.generalСlasses.FilterBeforFillingTable;
-import com.bars.helperClasses.ReadingFromFile;
 import com.bars.credit.AccKdPage;
 import com.bars.credit.BriefcaseNewCreditPage;
 import com.bars.credit.BriefcaseWorkCreditPage;
 import com.bars.credit.NewCreditPage;
-import com.codeborne.selenide.junit.ScreenShooter;
-import com.codeborne.selenide.junit.TextReport;
-import org.junit.Rule;
+import com.bars.generalСlasses.FilterBeforFillingTable;
+import com.bars.generalСlasses.SearchPage;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
+import com.bars.helperClasses.Calculation;
+import com.bars.helperClasses.ConfigProperties;
+import com.bars.helperClasses.ReadingFromFile;
 import org.junit.Test;
-import org.junit.rules.TestRule;
 
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -28,10 +24,6 @@ public class AllCreditTest extends BaseLoginTest {
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
 
-    @Rule
-    public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
-    @Rule
-    public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
 /*
     @Test
     public void dbconTest() throws SQLException{

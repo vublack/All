@@ -21,9 +21,10 @@ public class BasicDetails {
 
     public void enterFIO(String surname, String name, String patronymic) {
         $("#bt_FullDopRekv").shouldBe(visible).click ();
+        $("#ed_FIO_MN").shouldBe(visible).setValue(patronymic);
         $("#ed_FIO_LN").shouldBe(visible).setValue(surname);
         $("#ed_FIO_FN").shouldBe(visible).setValue(name);
-        $("#ed_FIO_MN").shouldBe(visible).setValue(patronymic);
+
     }
 
     public void enterAddress(String index, String region, String area, String settlement, String street, String house) {
