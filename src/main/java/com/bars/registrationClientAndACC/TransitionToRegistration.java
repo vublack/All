@@ -125,8 +125,7 @@ public class TransitionToRegistration {
         }
     }
 
-    public void openCustomerAccounts(String rnk){
-        this.filterClientbyRNK( rnk );
+    public void openCustomerAccounts(){
         $x("//span[@class = 'ng-binding']").shouldBe(visible).click ();
         //executeJavaScript("arguments[0].scrollIntoView();", $("#openCustAccsBt"));
         $("#openCustAccsBtn").shouldBe(visible).click ();
