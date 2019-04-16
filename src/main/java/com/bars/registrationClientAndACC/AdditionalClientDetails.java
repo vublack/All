@@ -95,13 +95,18 @@ public class AdditionalClientDetails {
         $("#gvMain_ctl06_imgEdHelp").shouldBe(visible).click ();
         switchWindowOrFrame.kContentFrame();
         $x("//div[@title = '5']").shouldBe(visible).click ();
+        $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
+        switchWindowOrFrame.tabFrameClient("Tab5");
         $("#gvMain_ctl08_imgEdHelp").shouldBe(visible).click ();
         switchWindowOrFrame.kContentFrame();
         $x("//div[@title = '5']").shouldBe(visible).click ();
+        $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
+        switchWindowOrFrame.tabFrameClient("Tab5");
         $("#gvMain_ctl09_imgEdHelp").shouldBe(visible).click ();
         switchWindowOrFrame.kContentFrame();
         $x("//div[@title = '2']").shouldBe(visible).click ();
-    }
+        $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
+           }
 
     public void enterOther(){
         switchWindowOrFrame.tabFrameClient("Tab5");

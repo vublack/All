@@ -11,7 +11,6 @@ import com.bars.helperClasses.Calculation;
 import com.bars.helperClasses.ConfigProperties;
 import com.bars.helperClasses.ReadingFromFile;
 import org.junit.Test;
-
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -75,12 +74,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
 /*
-
         if( base.equals("OBMMFOT")|| base.equals("OBMMFOT1"))
         {
             newCreditPage.chooseGKD();
         }
-
 */
         //Вкладка Дані про погашення
         String firstPaymentDate = newCreditPage.getConclusionDate();
@@ -184,7 +181,6 @@ public class AllCreditTest extends BaseLoginTest {
         BriefcaseWorkCreditPage.getTableName();
         BriefcaseWorkCreditPage.matchingSumInGpkUo(numSum+".00");
         switchWindowOrFrame.closeWindow(gpkUoWindow);
-
         switchWindowOrFrame.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
         switchWindowOrFrame.mainFrame();
         BriefcaseWorkCreditPage.chooseCredit(newCreditRefUo);
@@ -210,13 +206,10 @@ public class AllCreditTest extends BaseLoginTest {
         accKdPage.checkAccSSopening("productuo");
         switchWindowOrFrame.closeWindow(accKdUOwindow);
         switchWindowOrFrame.switchToOldWindow(workCreditOfLegalEntityBriefcaseWindow);
-
-
     }
 //    @Ignore
     @Test
     public void kreditFoTest() {
-
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         System.out.println(base);
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "1816");
@@ -232,9 +225,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillNumSum(numSum, numSum);
         newCreditPage.fillInitiative(ConfigProperties.getTestProperty("branch"));
         newCreditPage.okpoRNKchoose(ConfigProperties.getTestProperty("okpofo"), ConfigProperties.getTestProperty("rnkfo"));
-        newCreditPage.ratesButtonClick();
-        newCreditPage.filterInputClick();
-        newCreditPage.filterInput("9999");
+        newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
+//        newCreditPage.ratesButtonClick();
+//        newCreditPage.filterInputClick();
+//        newCreditPage.filterInput("9999");
         newCreditPage.typeOfCredit("ФЛ стандарт");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
         newCreditPage.productOfCredit1();

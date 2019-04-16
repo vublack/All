@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class LoginPage {
     public void writePolygon(){
         String name = $x ( "//h2" ).shouldBe ( visible ).getText ( );
-        WritingToFile.Filewriting( "Polygon.txt", name);
+        WritingToFile.filewriting( "Polygon.txt", name);
     }
     public void fillLoginForm(String login, String password) {
         $("#txtUserName").setValue(login);

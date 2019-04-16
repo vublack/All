@@ -35,6 +35,8 @@ public class RegistrationFoTest extends BaseLoginTest{
         clientDetails.enterDocumentDetails("Овручським районним управлінням", "МО",calculation.randomNumWithBorder(100000, 999999),"10102010","05022018","10101992" );
         clientDetails.enterNumberPhone("5648978");
 
+        transitionToReg.editingEcomomDetails();
+
         //      Additional information
         transitionToReg.clickAdditionalInformationBtn();
         additionaClientlInfo.fillingISP();
@@ -79,9 +81,8 @@ public class RegistrationFoTest extends BaseLoginTest{
         //Find client
         transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
         transitionToReg.clickSearchRowNum(ConfigProperties.getTestProperty("rnkfo"));
-        basicDetails.enterSAB("564654");
+        basicDetails.enterEcodeAndNumDog("564654");
         transitionToReg.clickTaxpayerDetalisBtn();
-        transitionToReg.editingEcomomDetails();
         transitionToReg.clickClientDetailBtn();
         clientDetails.editingClientDetail("Боярка", "044546698" );
         transitionToReg.clickAdditionalInformationBtn();
@@ -95,5 +96,11 @@ public class RegistrationFoTest extends BaseLoginTest{
         transitionToReg.clickClientSegmentsBtn();
         transitionToReg.clickCDOBtn();
         transitionToReg.saveClientCard();
+        transitionToReg.confirmationReg();
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        //Find client
+        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
+        transitionToReg.checkNumdogClient(ReadingFromFile.read("NumDogClient.txt"));
+
     }
 }

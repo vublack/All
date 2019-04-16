@@ -20,6 +20,7 @@ public class TransitionToRegistration {
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab1"));
         $("#bTab1").shouldBe(visible).click ();
+        switchWindowOrFrame.tabFrameClient("Tab1");
         $x(("//*[@id = 'tb_main']/tbody/tr[1]/td/label")).shouldBe(visible).shouldHave(text("Заповнити реквізити платника податків"));
     }
 
@@ -40,7 +41,8 @@ public class TransitionToRegistration {
     public void clickClientDetailBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab3"));
-        $("#bTab3").shouldBe(visible).click ();
+        $("#bTab3").shouldBe(visible).click();
+        switchWindowOrFrame.tabFrameClient("Tab3");
         $x("//*[@id = 'tblMain']/tbody/tr[1]/td/label").shouldBe(visible).shouldHave(text("Заповнити Персональні реквізити"));
     }
 
@@ -105,14 +107,12 @@ public class TransitionToRegistration {
         executeJavaScript("arguments[0].scrollIntoView();", $("#bt_reg"));
         $("#bt_reg").shouldBe(visible).click ();
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
-
-        $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
     }
     public void NewRNKwriteTofile(){
         String t1 = getInfoText().replace("Клієнта РНК=", "");
         String t2 = t1.replace(" успішно збережено", "");
         System.out.println((char) 27 + "[34mРНК Клієнта - " + (char) 27 + "[0m" + t2);
-        WritingToFile.Filewriting( "ClientRNK.txt", t2);
+        WritingToFile.filewriting( "ClientRNK.txt", t2);
     }
     public void confirmationReg(){
         switchWindowOrFrame.kContentFrame();
@@ -120,12 +120,15 @@ public class TransitionToRegistration {
     }
 
     public void filterClientbyRNK(String rnk){
-        $x("//th[@data-field='Id']/a[1]/span").shouldBe(visible).click ();
+        $x("//th[@data-field='Id']/a[1]/span").shouldBe(visible).click();
         $x("//input[@class='k-formatted-value k-input']").shouldBe(visible).setValue(rnk);
         $x("//button[text() = 'фільтрувати']").shouldBe(visible).click ();
         $x("//th[@data-field='Id']/a[1]/span").shouldBe(visible).click ();
         $x("//button[text() = 'фільтрувати']").shouldBe(visible).click ();
 }
+    public void checkNumdogClient(String numDogFromFile){
+        $x("//span[@ng-bind='dataItem.ContractNumber']").shouldBe(visible).shouldHave(text(numDogFromFile));
+    }
 
     public void closeClient(){
         $x("//span[@class = 'ng-binding']").shouldBe(visible).click();

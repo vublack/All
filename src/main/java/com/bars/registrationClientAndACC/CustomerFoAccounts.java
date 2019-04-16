@@ -106,7 +106,7 @@ public class CustomerFoAccounts {
         $("#bAccountMask").shouldBe(visible).click ();
         $("#ddOb22").shouldBe(visible).click ();
         String nlsFo = $("#tbNls").shouldBe(visible).getValue();
-        WritingToFile.Filewriting( "NewAccFo.txt", nlsFo);
+        WritingToFile.filewriting( "NewAccFo.txt", nlsFo);
         //new Actions(driver).moveByOffset(1, 1).click().build().perform();
         checkPageAvailability.threePage ( "webService" );
         $("#td_21").shouldBe(visible).click();
