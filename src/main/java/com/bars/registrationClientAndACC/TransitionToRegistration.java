@@ -20,18 +20,28 @@ public class TransitionToRegistration {
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab1"));
         $("#bTab1").shouldBe(visible).click ();
+        $x(("//*[@id = 'tb_main']/tbody/tr[1]/td/label")).shouldBe(visible).shouldHave(text("Заповнити реквізити платника податків"));
     }
 
-    public void clickEconomicNormsBtn(){
+    public void editingEcomomDetails(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab2"));
         $("#bTab2").shouldBe(visible).click ();
+        switchWindowOrFrame.tabFrameClient("Tab2");
+        $("#ddl_FS_com").shouldBe(visible).click ();
+        switchWindowOrFrame.kContentFrame();
+        $x("//*[@title = '32']").shouldBe(visible).doubleClick ();
+        switchWindowOrFrame.tabFrameClient( "Tab2" );
+        $("#ddl_VED_com").shouldBe(visible).click ();
+        switchWindowOrFrame.kContentFrame();
+        $x("//*[@title = 'N2529']").shouldBe(visible).doubleClick();
     }
 
     public void clickClientDetailBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab3"));
         $("#bTab3").shouldBe(visible).click ();
+        $x("//*[@id = 'tblMain']/tbody/tr[1]/td/label").shouldBe(visible).shouldHave(text("Заповнити Персональні реквізити"));
     }
 
     public void clickAdditionalInformationBtn(){
@@ -49,24 +59,27 @@ public class TransitionToRegistration {
     public void clickConnectedPeopleBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab6"));
-        $("#bTab6").shouldBe(visible).click ();
+        $("#bTab6").shouldBe(visible).click();
+        $x("//td[@id='bTab6']/a").shouldHave(text("Пов`язані особи"));
     }
 
     public void clickClientSegmentsBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab7"));
         $("#bTab7").shouldBe(visible).click ();
+        $x("//td[@id='bTab7']/a").shouldHave(text("Сегмент клієнта"));
     }
 
     public void clickCDOBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab8"));
         $("#bTab8").shouldBe(visible).click ();
+        $x("//td[@id='bTab8']/a").shouldHave(text("СДО"));
     }
 
-    private void clickSearchRowNum(){
-        String searchRow = String.format( "//*[contains(text(),'%s')]", ReadingFromFile.read( "ClientRNK.txt" ));
-        $x( searchRow ).click();
+    public void clickSearchRowNum(String rnk){
+        String searchRow = String.format( "//*[contains(text(),'%s')]", rnk);
+        $x(searchRow).click();
     }
 
     private String getInfoText(){
@@ -87,18 +100,22 @@ public class TransitionToRegistration {
         $x("//button[@class = 'k-button']").shouldBe(visible).click ();
     }
 
-    public void confirmationReg(){
+    public void saveClientCard(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bt_reg"));
         $("#bt_reg").shouldBe(visible).click ();
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
-        if (getInfoText().contains("Помилки")) {
-            System.out.println((char) 27 + "[34mНе можна створити клієнта під бранчем '/' - " + (char) 27 + "[0m" + getInfoText());
-        }
+
+        $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
+    }
+    public void NewRNKwriteTofile(){
         String t1 = getInfoText().replace("Клієнта РНК=", "");
         String t2 = t1.replace(" успішно збережено", "");
         System.out.println((char) 27 + "[34mРНК Клієнта - " + (char) 27 + "[0m" + t2);
         WritingToFile.Filewriting( "ClientRNK.txt", t2);
+    }
+    public void confirmationReg(){
+        switchWindowOrFrame.kContentFrame();
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
     }
 
@@ -109,11 +126,6 @@ public class TransitionToRegistration {
         $x("//th[@data-field='Id']/a[1]/span").shouldBe(visible).click ();
         $x("//button[text() = 'фільтрувати']").shouldBe(visible).click ();
 }
-
-    public void openClient(String rnk){
-        this.filterClientbyRNK( rnk );
-        this.clickSearchRowNum();
-    }
 
     public void closeClient(){
         $x("//span[@class = 'ng-binding']").shouldBe(visible).click();

@@ -45,6 +45,8 @@ public class RegistrationFoTest extends BaseLoginTest{
         additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
         additionalClientDetails.enterOther();
         //      press the "Register" button
+        transitionToReg.saveClientCard();
+        transitionToReg.NewRNKwriteTofile();
         transitionToReg.confirmationReg();
         // Закрытие карточки клиента
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
@@ -70,5 +72,28 @@ public class RegistrationFoTest extends BaseLoginTest{
         customerFoAccounts.checkSpecparamTab();
         customerFoAccounts.saveOptionsEdit ();
         customerFoAccounts.closeCustFoAcc(ReadingFromFile.read("NewAccFo.txt"));
+    }
+    @Test
+    public void editingClientCardTest(){
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        //Find client
+        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
+        transitionToReg.clickSearchRowNum(ConfigProperties.getTestProperty("rnkfo"));
+        basicDetails.enterSAB("564654");
+        transitionToReg.clickTaxpayerDetalisBtn();
+        transitionToReg.editingEcomomDetails();
+        transitionToReg.clickClientDetailBtn();
+        clientDetails.editingClientDetail("Боярка", "044546698" );
+        transitionToReg.clickAdditionalInformationBtn();
+        additionaClientlInfo.editingDetail("ок", "Херсон", "40", "50", "15", "16", "123", "Ок");
+        transitionToReg.clickAdditionalDetailsBtn();
+        additionalClientDetails.enterGeneral();
+        additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
+        additionalClientDetails.enterOther();
+        additionalClientDetails.enterforCreditRegister("1", "0000000000", "Хорощший", "7000", "7000");
+        transitionToReg.clickConnectedPeopleBtn();
+        transitionToReg.clickClientSegmentsBtn();
+        transitionToReg.clickCDOBtn();
+        transitionToReg.saveClientCard();
     }
 }

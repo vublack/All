@@ -14,10 +14,10 @@ public class ClientDetails {
         return $x("//*[@id = 'tblMain']/tbody/tr[1]/td/label").getText();
     }
 
-    public void correctClientDetail(String bPlace, String telW){
+    public void editingClientDetail(String birthPlace, String workPhone){
         switchWindowOrFrame.tabFrameClient("Tab3");
-        $("#ed_BPLACE").shouldBe(visible).setValue ( bPlace );
-        $("#ed_TELW").shouldBe(visible).setValue ( telW );
+        $("#ed_BPLACE").shouldBe(visible).setValue (birthPlace);
+        $("#ed_TELW").shouldBe(visible).setValue (workPhone);
     }
 
     public void enterDocumentDetails(String organ, String ser, String numDoc, String passpDate, String datePhoto, String birthday){

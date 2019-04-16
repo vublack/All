@@ -17,16 +17,16 @@ public class AdditionaClientlInfo {
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click();
     }
 
-    public void correctDetail(String notes, String adrAlt, String lim, String limKass, String numDoc, String numPDV, String rnkp, String noteEc){
+    public void editingDetail(String notes, String adrAlt, String lim, String limKass, String numDoc, String numPDV, String rNumOfHolding, String noteSecurity){
         switchWindowOrFrame.tabFrameClient("Tab4");
-        $("#ed_NOTES").shouldBe(visible).setValue ( notes );
-        $("#ed_ADR_ALT").shouldBe(visible).setValue ( adrAlt );
-        $("#ed_LIM").shouldBe(visible).setValue ( lim );
-        $("#ed_LIM_KASS").shouldBe(visible).setValue ( limKass );
-        $("#ed_NOM_DOG").shouldBe(visible).setValue ( numDoc );
+        $("#ed_NOTES").shouldBe(visible).setValue(notes);
+        $("#ed_ADR_ALT").shouldBe(visible).setValue(adrAlt);
+        $("#ed_LIM").shouldBe(visible).setValue(lim);
+        $("#ed_LIM_KASS").shouldBe(visible).setValue(limKass);
+        $("#ed_NOM_DOG").shouldBe(visible).setValue(numDoc);
         $("#ed_NOMPDV").shouldBe(visible).setValue ( numPDV );
-        $("#ed_RNKP").shouldBe(visible).setValue ( rnkp );
-        $("#ed_NOTESEC").shouldBe(visible).setValue ( noteEc );
+        $("#ed_RNKP").shouldBe(visible).setValue (rNumOfHolding);
+        $("#ed_NOTESEC").shouldBe(visible).setValue (noteSecurity);
         $("#ddl_CRISK").shouldBe(visible).click ();
         $x("//*[@id = 'ddl_CRISK']/option[@value = '3']").shouldBe(visible).click ();
         $("#ddl_MB").shouldBe(visible).click ();

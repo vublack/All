@@ -16,7 +16,7 @@ public class BasicDetails {
 
     public void enterSAB(String sab) {
         switchWindowOrFrame.tabFrameClient("Tab0");
-        $("#ed_SAB").shouldBe(visible).setValue ( sab);
+        $("#ed_SAB").shouldBe(visible).setValue (sab);
     }
 
     public void enterFIO(String surname, String name, String patronymic) {

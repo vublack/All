@@ -84,6 +84,24 @@ public class AdditionalClientDetails {
         $x("//div[@title = 'Задовільний']").shouldBe(visible).click ();
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
     }
+    public void enterforCreditRegister(String personsDependent,String employerOKPO, String employerName, String unconfirmedIncome, String confirmedIncome){
+        switchWindowOrFrame.tabFrameClient("Tab5");
+        $( By.linkText("Для Кредитного реєстру")).shouldBe(visible).click();
+        $("#gvMain_ctl02_edEdVal").shouldBe(visible).setValue (personsDependent);
+        $("#gvMain_ctl03_edEdVal").shouldBe(visible).setValue (employerOKPO);
+        $("#gvMain_ctl04_edEdVal").shouldBe(visible).setValue (employerName);
+        $("#gvMain_ctl05_edEdVal").shouldBe(visible).setValue (unconfirmedIncome);
+        $("#gvMain_ctl07_edEdVal").shouldBe(visible).setValue (confirmedIncome);
+        $("#gvMain_ctl06_imgEdHelp").shouldBe(visible).click ();
+        switchWindowOrFrame.kContentFrame();
+        $x("//div[@title = '5']").shouldBe(visible).click ();
+        $("#gvMain_ctl08_imgEdHelp").shouldBe(visible).click ();
+        switchWindowOrFrame.kContentFrame();
+        $x("//div[@title = '5']").shouldBe(visible).click ();
+        $("#gvMain_ctl09_imgEdHelp").shouldBe(visible).click ();
+        switchWindowOrFrame.kContentFrame();
+        $x("//div[@title = '2']").shouldBe(visible).click ();
+    }
 
     public void enterOther(){
         switchWindowOrFrame.tabFrameClient("Tab5");
