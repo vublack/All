@@ -45,6 +45,9 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
+        String mainWin = getWebDriver().getWindowHandle();
+        switchWindowOrFrame.closeFaliTestWindow();
+        switchWindowOrFrame.switchToOldWindow(mainWin);
         //Страница поиска
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         searchPage.searchFunction("Портфель НОВИХ кредитів ЮО", "1818");
@@ -210,6 +213,9 @@ public class AllCreditTest extends BaseLoginTest {
 //    @Ignore
     @Test
     public void kreditFoTest() {
+        String mainWin = getWebDriver().getWindowHandle();
+        switchWindowOrFrame.closeFaliTestWindow();
+        switchWindowOrFrame.switchToOldWindow(mainWin);
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
         System.out.println(base);
         searchPage.searchFunction("Портфель НОВИХ кредитів ФО", "1816");

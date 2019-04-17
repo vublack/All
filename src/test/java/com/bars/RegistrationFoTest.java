@@ -1,6 +1,7 @@
 package com.bars;
 
 import com.bars.generalСlasses.SearchPage;
+import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.bars.helperClasses.Calculation;
 import com.bars.helperClasses.ConfigProperties;
 import com.bars.helperClasses.ReadingFromFile;
@@ -8,6 +9,8 @@ import com.bars.registrationClientAndACC.*;
 import org.junit.Test;
 
 import java.io.IOException;
+
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 // Реєстрація фізичної особи, редагування картки клієнта ФО, видалення ФО
 // Відкриття, редагування, видалення рахунку ФО
@@ -20,9 +23,13 @@ public class RegistrationFoTest extends BaseLoginTest{
     private static AdditionalClientDetails additionalClientDetails = new AdditionalClientDetails();
     private static Calculation calculation = new Calculation();
     private static CustomerFoAccounts customerFoAccounts = new CustomerFoAccounts();
+    private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
 
     @Test
     public void createAndDelClientCardTest(){
+        String mainWin = getWebDriver().getWindowHandle();
+        switchWindowOrFrame.closeFaliTestWindow();
+        switchWindowOrFrame.switchToOldWindow(mainWin);
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
         transitionToReg.goingToRegister ("999999999");
     //      Basic details
@@ -63,6 +70,9 @@ public class RegistrationFoTest extends BaseLoginTest{
 
     @Test
     public void customerFoAccountTest() throws IOException {
+        String mainWin = getWebDriver().getWindowHandle();
+        switchWindowOrFrame.closeFaliTestWindow();
+        switchWindowOrFrame.switchToOldWindow(mainWin);
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
         //Find client
         transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
@@ -77,6 +87,9 @@ public class RegistrationFoTest extends BaseLoginTest{
     }
     @Test
     public void editingClientCardTest(){
+        String mainWin = getWebDriver().getWindowHandle();
+        switchWindowOrFrame.closeFaliTestWindow();
+        switchWindowOrFrame.switchToOldWindow(mainWin);
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
         //Find client
         transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));

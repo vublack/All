@@ -2,6 +2,8 @@ package com.bars.generalСlasses;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -11,6 +13,13 @@ public class SwitchWindowOrFrame {
             if(!windowsHandls.equals(oldWindowName)){
                 getWebDriver().switchTo().window(windowsHandls);
             }
+        }
+    }
+    public void closeFaliTestWindow(){
+        ArrayList<String> numWindows = new ArrayList<> (getWebDriver().getWindowHandles());
+        int numSize = numWindows.size();
+        if(numSize>1){
+            switchTo().window(numWindows.get(0)).close();
         }
     }
     public void switchToWindow2(){
