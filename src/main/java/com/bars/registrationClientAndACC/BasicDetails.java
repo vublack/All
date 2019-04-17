@@ -28,12 +28,16 @@ public class BasicDetails {
         $("#ed_SAB").shouldBe(visible).setValue (Ecode);
     }
 
-    public void enterFIO(String surname, String name, String patronymic) {
+    public void enterFoFIO(String surname, String name, String patronymic) {
         $("#bt_FullDopRekv").shouldBe(visible).click ();
         $("#ed_FIO_MN").shouldBe(visible).setValue(patronymic);
         $("#ed_FIO_LN").shouldBe(visible).setValue(surname);
         $("#ed_FIO_FN").shouldBe(visible).setValue(name);
 
+    }
+    public void enterFOPfIO(String fullName) {
+        switchWindowOrFrame.tabFrameClient("Tab0");
+        $("#ed_NMK").shouldBe(visible).setValue ( fullName );
     }
 
     public void enterAddress(String index, String region, String area, String settlement, String street, String house) {

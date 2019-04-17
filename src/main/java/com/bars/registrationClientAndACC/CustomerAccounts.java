@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
-public class CustomerFoAccounts {
+public class CustomerAccounts {
 
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
     private CheckPageAvailability checkPageAvailability = new CheckPageAvailability ();
@@ -97,7 +97,7 @@ public class CustomerFoAccounts {
         switchTo().window(tabs1237.get(0));
     }
 
-    public void createCustAcc(String nbs, String value) {
+    public void createCustAcc(String nbs) {
         $("#btOpen").shouldBe(visible).click ();
         checkPageAvailability.twoPage ( "ctl00" );
         getWebDriver().manage().window().maximize ();
@@ -106,13 +106,14 @@ public class CustomerFoAccounts {
         $("#bAccountMask").shouldBe(visible).click ();
         $("#ddOb22").shouldBe(visible).click ();
         String nlsFo = $("#tbNls").shouldBe(visible).getValue();
-        WritingToFile.filewriting( "NewAccFo.txt", nlsFo);
+        WritingToFile.filewriting("NewAcc.txt", nlsFo);
         //new Actions(driver).moveByOffset(1, 1).click().build().perform();
         checkPageAvailability.threePage ( "webService" );
         $("#td_21").shouldBe(visible).click();
         checkPageAvailability.twoPage ( "ctl00" );
-
-        //Other
+    }
+    public void specparamFo(String value){
+        //Specparam
         $("#bTab3").shouldBe(visible).click ();
         switchWindowOrFrame.tabFrameAcc("#Tab3");
 // !!!!!! МОЖЕТ появиться обязательный доп параметр , тогда в if разкоментировать
@@ -145,7 +146,27 @@ public class CustomerFoAccounts {
         $("#VALUE").shouldBe(visible).setValue ( value );
         $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
     }
+    public void specparamFOP(String value){
+        //Specparam
+        $("#bTab3").shouldBe(visible).click ();
+        switchWindowOrFrame.tabFrameAcc("#Tab3");
+        $("#VALUE_6").shouldBe(visible).doubleClick ();
+        $("#VALUE").shouldBe(visible).setValue ( value );
+        $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
+        $("#VALUE_7").shouldBe(visible).doubleClick ();
+        $("#VALUE").shouldBe(visible).setValue ( value );
+        $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
+        $("#VALUE_8").shouldBe(visible).doubleClick ();
+        $("#VALUE").shouldBe(visible).setValue ( value );
+        $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
+        $("#VALUE_9").shouldBe(visible).doubleClick ();
+        $("#VALUE").shouldBe(visible).setValue ( value );
+        $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
+        $("#VALUE_10").shouldBe(visible).doubleClick ();
+        $("#VALUE").shouldBe(visible).setValue ( value );
+        $x("//input[@type='button' and @value='Зберегти']").shouldBe(visible).click ();
 
+    }
     public void editCustFoAcc(String nlsAlt, String nls){
         switchWindowOrFrame.mainFrame();
         $("#tbFindNls").shouldBe(visible).setValue(nls);

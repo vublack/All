@@ -24,18 +24,11 @@ public class TransitionToRegistration {
         $x(("//*[@id = 'tb_main']/tbody/tr[1]/td/label")).shouldBe(visible).shouldHave(text("Заповнити реквізити платника податків"));
     }
 
-    public void editingEcomomDetails(){
+    public void clickEconomDetailsBtn(){
         switchWindowOrFrame.kContentFrame();
         executeJavaScript("arguments[0].scrollIntoView();", $("#bTab2"));
         $("#bTab2").shouldBe(visible).click ();
         switchWindowOrFrame.tabFrameClient("Tab2");
-        $("#ddl_FS_com").shouldBe(visible).click ();
-        switchWindowOrFrame.kContentFrame();
-        $x("//*[@title = '32']").shouldBe(visible).doubleClick ();
-        switchWindowOrFrame.tabFrameClient( "Tab2" );
-        $("#ddl_VED_com").shouldBe(visible).click ();
-        switchWindowOrFrame.kContentFrame();
-        $x("//*[@title = 'N2529']").shouldBe(visible).doubleClick();
     }
 
     public void clickClientDetailBtn(){

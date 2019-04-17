@@ -12,9 +12,9 @@ import java.io.IOException;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-// Реєстрація фізичної особи, редагування картки клієнта ФО, видалення ФО
-// Відкриття, редагування, видалення рахунку ФО
-public class RegistrationFoTest extends BaseLoginTest{
+// Реєстрація фізичної особи, редагування картки клієнта ФОП, видалення ФОП
+// Відкриття, редагування, видалення рахунку ФОП
+public class RegistrationFOPTest extends BaseLoginTest{
     private static SearchPage searchPage = new SearchPage();
     private static TransitionToRegistration transitionToReg = new TransitionToRegistration();
     private static BasicDetails basicDetails = new BasicDetails();
@@ -27,24 +27,27 @@ public class RegistrationFoTest extends BaseLoginTest{
     private static EconomDetails economDetails = new EconomDetails();
 
     @Test
-    public void createAndDelClientCardTest(){
+    public void createAndDelFOPCardTest(){
         String mainWin = getWebDriver().getWindowHandle();
         switchWindowOrFrame.closeFaliTestWindow();
         switchWindowOrFrame.switchToOldWindow(mainWin);
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         transitionToReg.goingToRegister ("999999999");
     //      Basic details
         // IPN
         basicDetails.enterOKPO(ConfigProperties.getTestProperty("okpofo"));
-        basicDetails.enterFoFIO( "Рінкон","Дієго" , "Дієгович" );
+        basicDetails.enterFOPfIO( "Рауль Гонсалез Юланко" );
         // Clien adress
         basicDetails.enterAddress("08700" , "Київська обл.", "Обухівський район", "Обухівв", "Варвари", "54");
+
         transitionToReg.clickClientDetailBtn();
         clientDetails.enterDocumentDetails("Овручським районним управлінням", "МО",calculation.randomNumWithBorder(100000, 999999),"10102010","05022018","10101992" );
         clientDetails.enterNumberPhone("5648978");
-// Перехід на вкладку Економ нормативи
+
+        // Перехід на вкладку Економ нормативи
         transitionToReg.clickEconomDetailsBtn();
-        economDetails.editingEconomDetails();
+        economDetails.enterEconNormforFOP("14200", "N8010");
 
         //      Additional information
         transitionToReg.clickAdditionalInformationBtn();
@@ -54,34 +57,34 @@ public class RegistrationFoTest extends BaseLoginTest{
         transitionToReg.clickAdditionalDetailsBtn();
         additionalClientDetails.enterGeneral();
         additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
-        additionalClientDetails.enterOther();
         //      press the "Register" button
         transitionToReg.saveClientCard();
         transitionToReg.NewRNKwriteTofile();
         transitionToReg.confirmationReg();
+
         // Закрытие карточки клиента
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         transitionToReg.filterClientbyRNK(ReadingFromFile.read( "ClientRNK.txt" ));
         transitionToReg.closeClient();
 
         // проверка закрытия клиента
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         transitionToReg.filterClientbyRNK(ReadingFromFile.read( "ClientRNK.txt" ));
         transitionToReg.checkClose();
     }
 
     @Test
-    public void customerFoAccountTest() throws IOException {
+    public void customerFOPaccountTest() throws IOException {
         String mainWin = getWebDriver().getWindowHandle();
         switchWindowOrFrame.closeFaliTestWindow();
         switchWindowOrFrame.switchToOldWindow(mainWin);
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         //Find client
         transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfop"));
         //Open customer accounts
         transitionToReg.openCustomerAccounts();
-        customerAccounts.createCustAcc( "2620");
-        customerAccounts.specparamFo( "1" );
+        customerAccounts.createCustAcc( "2600");
+        customerAccounts.specparamFOP( "1" );
         customerAccounts.saveOptions();
         customerAccounts.editCustFoAcc( "213" , ReadingFromFile.read("NewAcc.txt"));
         customerAccounts.checkSpecparamTab();
@@ -89,14 +92,14 @@ public class RegistrationFoTest extends BaseLoginTest{
         customerAccounts.closeCustFoAcc(ReadingFromFile.read("NewAcc.txt"));
     }
     @Test
-    public void editingClientCardTest(){
+    public void editingFOPClientCardTest(){
         String mainWin = getWebDriver().getWindowHandle();
         switchWindowOrFrame.closeFaliTestWindow();
         switchWindowOrFrame.switchToOldWindow(mainWin);
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         //Find client
-        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
-        transitionToReg.clickSearchRowNum(ConfigProperties.getTestProperty("rnkfo"));
+        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfop"));
+        transitionToReg.clickSearchRowNum(ConfigProperties.getTestProperty("rnkfop"));
         basicDetails.enterEcodeAndNumDog("564654");
         transitionToReg.clickTaxpayerDetalisBtn();
         transitionToReg.clickClientDetailBtn();
@@ -113,7 +116,7 @@ public class RegistrationFoTest extends BaseLoginTest{
         transitionToReg.clickCDOBtn();
         transitionToReg.saveClientCard();
         transitionToReg.confirmationReg();
-        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
+        searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         //Find client
         transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
         transitionToReg.checkNumdogClient(ReadingFromFile.read("NumDogClient.txt"));
