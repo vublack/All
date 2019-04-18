@@ -10,42 +10,6 @@ public class AdditionalClientDetails {
 
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
 
-
-    public String getGeneralText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Загальні")).getText ();
-    }
-
-    public String getFinMonText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Фін.мон.")).getText ();
-    }
-
-    public String getBPKText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("БПК")).getText ();
-    }
-
-    public String getSanctionsText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Санкції")).getText ();
-    }
-
-    public String getCreditRegisterText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Для Кредитного реєстру")).getText ();
-    }
-
-    public String getOtherText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Інші")).getText ();
-    }
-
-    public String getRiskCriteriaText(){
-        switchWindowOrFrame.tabFrameClient("Tab5");
-        return $( By.linkText("Критерії ризику")).getText ();
-    }
-
     public void enterGeneral(){
         switchWindowOrFrame.tabFrameClient("Tab5");
         $("#gvMain_ctl02_imgEdHelp").shouldBe(visible).click ();

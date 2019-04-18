@@ -1,6 +1,5 @@
 package com.bars.registrationClientAndACC;
 
-import com.bars.generalСlasses.LoginPage;
 import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.bars.helperClasses.ReadingFromFile;
 import com.bars.helperClasses.WritingToFile;
@@ -11,10 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class TransitionToRegistration {
-    private static ReadingFromFile readingFromFile = new ReadingFromFile();
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
-    private static LoginPage loginPage = new LoginPage();
-
 
     public void clickTaxpayerDetalisBtn(){
         switchWindowOrFrame.kContentFrame();

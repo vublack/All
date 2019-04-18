@@ -9,11 +9,6 @@ import static com.codeborne.selenide.Selenide.$x;
 public class ClientDetails {
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
 
-    public String getHeadingText(){
-        switchWindowOrFrame.tabFrameClient("Tab3");
-        return $x("//*[@id = 'tblMain']/tbody/tr[1]/td/label").getText();
-    }
-
     public void editingClientDetail(String birthPlace, String workPhone){
         switchWindowOrFrame.tabFrameClient("Tab3");
         $("#ed_BPLACE").shouldBe(visible).setValue (birthPlace);
@@ -36,8 +31,6 @@ public class ClientDetails {
         $("#ed_BDAY").shouldBe(visible).sendKeys(birthday);
         $x( "//select[@id = 'ddl_SEX']/option[@value = '1']").shouldBe(visible).click();
     }
-
-
 
     public void enterNumberPhone(String tel){
         $("#ed_TELM_CODE").shouldBe(visible).click ();
