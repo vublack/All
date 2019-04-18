@@ -77,7 +77,7 @@ public class RegistrationFoTest extends BaseLoginTest{
         switchWindowOrFrame.switchToOldWindow(mainWin);
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "3039");
         //Find client
-        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfop"));
+        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
         //Open customer accounts
         transitionToReg.openCustomerAccounts();
         customerAccounts.createCustAcc( "2620");
