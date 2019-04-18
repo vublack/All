@@ -109,7 +109,6 @@ public class RegistrationFOPTest extends BaseLoginTest{
         transitionToReg.clickAdditionalDetailsBtn();
         additionalClientDetails.enterGeneral();
         additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
-        additionalClientDetails.enterOther();
         additionalClientDetails.enterforCreditRegister("1", "0000000000", "Хорощший", "7000", "7000");
         transitionToReg.clickConnectedPeopleBtn();
         transitionToReg.clickClientSegmentsBtn();
@@ -118,7 +117,7 @@ public class RegistrationFOPTest extends BaseLoginTest{
         transitionToReg.confirmationReg();
         searchPage.searchFunction("Реєстрація клієнтів і Рахунків", "1939");
         //Find client
-        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfo"));
+        transitionToReg.filterClientbyRNK(ConfigProperties.getTestProperty("rnkfop"));
         transitionToReg.checkNumdogClient(ReadingFromFile.read("NumDogClient.txt"));
 
     }
