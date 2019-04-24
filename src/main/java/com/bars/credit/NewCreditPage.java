@@ -2,6 +2,7 @@ package com.bars.credit;
 
 import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.codeborne.selenide.SelenideElement;
+import org.apache.tika.metadata.Office;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -63,16 +64,21 @@ public class NewCreditPage {
         String goal = String.format("//li[text()='%s']", creditGoal);
         $x(goal).shouldBe(visible).click();
     }
-    public void productOfCredit1(){
+    public void productOfCredit1(String creditProguct){
+        executeJavaScript("$('#refProd').val(arguments[0])", creditProguct);
+        executeJavaScript("$(\"#refProd\").trigger(\"change\");");
+/*
         $x("//input[@id='refProd']/following-sibling::button").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
         $x("//button[text()='Відмінити']").shouldBe(visible).click();
-    }
+ */   }
+/*
     public void productOfCredit2(){
         $x("//input[@id='refProd']/following-sibling::button").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }
+*/
 
     public void chooseGKD(){
 //    void chooseGKD(String gKD){
@@ -120,6 +126,11 @@ public class NewCreditPage {
     }
     public void partnerPresent(){
         $x("(//*[text()='Наявність партнеру(Так/Ні)']/following::a)[1]").shouldBe(visible).click();
+        switchWindowOrFrame.switchToWindow2();
+        $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
+    }
+    public void сentralOfficeContract(){
+        $x("(//*[text()='Договір співробітництва заключено на рівні ЦА']/following::a)[1]").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
     }

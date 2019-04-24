@@ -53,7 +53,7 @@ public class RegistrationFoTest extends BaseLoginTest{
         //         Additional details
         transitionToReg.clickAdditionalDetailsBtn();
         additionalClientDetails.enterGeneral();
-        additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
+        additionalClientDetails.enterFinMonFo( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
         additionalClientDetails.enterOther();
         //      press the "Register" button
         transitionToReg.saveClientCard();
@@ -105,7 +105,7 @@ public class RegistrationFoTest extends BaseLoginTest{
         additionaClientlInfo.editingDetail("ок", "Херсон", "40", "50", "15", "16", "123", "Ок");
         transitionToReg.clickAdditionalDetailsBtn();
         additionalClientDetails.enterGeneral();
-        additionalClientDetails.enterFinMon( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
+        additionalClientDetails.enterFinMonFo( "Українець", "05022017", "05032017","Дашкевич О.М., тел.46-45" , "Заробітна плата");
         additionalClientDetails.enterOther();
         additionalClientDetails.enterforCreditRegister("1", "0000000000", "Хорощший", "7000", "7000");
         transitionToReg.clickConnectedPeopleBtn();

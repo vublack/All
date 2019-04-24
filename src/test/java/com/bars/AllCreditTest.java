@@ -72,10 +72,10 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.ratesInput(ConfigProperties.getTestProperty("rate"));
         newCreditPage.typeOfCredit("ЮО Стандартний");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
-        newCreditPage.productOfCredit1();
-        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
-        newCreditPage.productOfCredit2();
-        newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
+        newCreditPage.productOfCredit1(ConfigProperties.getTestProperty("productuo"));
+//        switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
+//        newCreditPage.productOfCredit2();
+//        newCreditPage.filterInput(ConfigProperties.getTestProperty("productuo"));
 /*
         if( base.equals("OBMMFOT")|| base.equals("OBMMFOT1"))
         {
@@ -237,10 +237,12 @@ public class AllCreditTest extends BaseLoginTest {
 //        newCreditPage.filterInput("9999");
         newCreditPage.typeOfCredit("ФЛ стандарт");
         newCreditPage.goalOfCredit("Поточна дiяльнiсть");
-        newCreditPage.productOfCredit1();
+        newCreditPage.productOfCredit1(ConfigProperties.getTestProperty("productfo"));
+/*
         switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.productOfCredit2();
         newCreditPage.filterInput(ConfigProperties.getTestProperty("productfo"));
+*/
         //Вкладка Дані про погашення
         String firstPaymentDate = newCreditPage.getConclusionDate();
         newCreditPage.firstPaymentDate(firstPaymentDate);
@@ -255,6 +257,13 @@ public class AllCreditTest extends BaseLoginTest {
             newCreditPage.pressFilterByCode();
             newCreditPage.filterInput("INTRT");
             newCreditPage.marketRate("12");
+            newCreditPage.updateParameter();
+
+            newCreditPage.pressFilterByCode();
+            newCreditPage.filterInput("PARTC");
+            newCreditPage.сentralOfficeContract();
+            newCreditPage.filterInput2("NO");
+            switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
             newCreditPage.updateParameter();
         }
         newCreditPage.pressFilterByCode();
