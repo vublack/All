@@ -90,7 +90,7 @@ public class AdditionalClientDetails {
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
 
         switchWindowOrFrame.tabFrameClient("Tab5");
-        $x("(//td[text() = 'Відомості про виконавчий орган']/following::input)[1]").shouldBe(visible).setValue ("DDD");
+//        $x("(//td[text() = 'Відомості про виконавчий орган']/following::input)[1]").shouldBe(visible).setValue ("DDD");
         $x("(//td[text() = 'Громадянство']/following::input)[1]").shouldBe(visible).setValue ( citizenship );
         $x("(//td[text() = 'Дата первинного заповнення анкети']/following::input)[1]").shouldBe(visible).click();
         $x("(//td[text() = 'Дата первинного заповнення анкети']/following::input)[1]").shouldBe(visible).sendKeys(firstFilldData);
