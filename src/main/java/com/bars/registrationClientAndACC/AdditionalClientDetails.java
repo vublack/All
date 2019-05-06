@@ -1,8 +1,8 @@
 package com.bars.registrationClientAndACC;
 
 import com.bars.generalСlasses.SwitchWindowOrFrame;
-import com.bars.helperClasses.ReadingFromFile;
 import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -18,12 +18,12 @@ public class AdditionalClientDetails {
         switchWindowOrFrame.kContentFrame();
         $x("//div[@title = '2']").shouldBe(visible).click ();
         $x("//button[@class = 'delete-confirm k-button k-primary']").shouldBe(visible).click ();
-
+        /*
         if (ReadingFromFile.read ( "Polygon.txt" ).equals( "DB OBMMFOT" )){
             switchWindowOrFrame.tabFrameClient("Tab5");
             $x("(//td[text()='Дата запису в ЄДР']/following::input)[1]").shouldBe(visible).setValue("24.01.2018");
             $x("(//td[text()='Номер запису в ЄДР']/following::input)[1]").shouldBe(visible).setValue("132");
-            }
+            }*/
     }
 
     public void enterFinMonFo(String citizenship, String firstFilldData, String dateOfIdentification, String identificationOfficer, String sourcesOfMoney){
