@@ -252,13 +252,11 @@ public class AllCreditTest extends BaseLoginTest {
         switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
 
-        if( base.equals("OBMMFOT") || base.equals("RCMMFO"))
-        {
-            newCreditPage.pressFilterByCode();
-            newCreditPage.filterInput("INTRT");
-            newCreditPage.marketRate("12");
-            newCreditPage.updateParameter();
-        }
+        newCreditPage.pressFilterByCode();
+        newCreditPage.filterInput("INTRT");
+        newCreditPage.marketRate("12");
+        newCreditPage.updateParameter();
+
         if( base.equals("OBMMFOT"))
         {
              newCreditPage.pressFilterByCode();
