@@ -5,12 +5,17 @@ import com.bars.credit.BriefcaseNewCreditPage;
 import com.bars.credit.BriefcaseWorkCreditPage;
 import com.bars.credit.NewCreditPage;
 import com.bars.generalСlasses.FilterBeforFillingTable;
+import com.bars.generalСlasses.LoginPage;
 import com.bars.generalСlasses.SearchPage;
 import com.bars.generalСlasses.SwitchWindowOrFrame;
 import com.bars.helperClasses.Calculation;
 import com.bars.helperClasses.ConfigProperties;
 import com.bars.helperClasses.ReadingFromFile;
 import org.junit.Test;
+
+import java.sql.SQLException;
+
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -22,29 +27,34 @@ public class AllCreditTest extends BaseLoginTest {
     private BriefcaseNewCreditPage briefcaseNewCreditPage = page(BriefcaseNewCreditPage.class);
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private AccKdPage accKdPage = page(AccKdPage.class);
+    private static LoginPage loginPage = new LoginPage();
 
-/*
-    @Test
-    public void dbconTest() throws SQLException{
-        loginPage.prof();
-        String base = loginPage.getPolygon();
-        loginPage.prof();
+//    @Test
+//    public void dbconTest() throws SQLException {
+//        String projectUrl = System.getProperty(baseUrl);
+//        System.out.println(projectUrl);
+//        selenide.baseUrl
+//        loginPage.prof();
+//        String base = loginPage.getPolygon();
+//        loginPage.prof();
+//
+//
+//        dBoperation.setupDBconection(base);
+//        String a = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
+//        briefcaseWorkCreditPage.checkOB22forODBacc(dBoperation);
+//       System.out.println("asdf" + a);
+//        dBoperation.closeConn();
+//
+//
+//    }
 
-
-        dBoperation.setupDBconection(base);
-        String a = dBoperation.selectFromDB("select * from cck_ob22 c where c.nbs='2203' and c.ob22='01'", "SD_N");
-        briefcaseWorkCreditPage.checkOB22forODBacc(dBoperation);
-       System.out.println("asdf" + a);
-        dBoperation.closeConn();
-
-
-    }
-*/
 
 
 //    @Ignore
     @Test
     public void creditLegalEntityTest() {
+//        String projectUrl = System.getProperty("selenide.baseUrl");
+//        System.out.println(projectUrl);
         String mainWin = getWebDriver().getWindowHandle();
         switchWindowOrFrame.closeFaliTestWindow();
         switchWindowOrFrame.switchToOldWindow(mainWin);
