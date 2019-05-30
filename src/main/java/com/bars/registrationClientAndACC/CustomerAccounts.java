@@ -193,13 +193,13 @@ public class CustomerAccounts {
 
         String mainWindows3 = getWebDriver().getWindowHandle(); //запоминаем первое окно
         checkPageAvailability.threePage ( "webService" );
-        $("#td_29").shouldBe(visible).click ();
+        $("#td_25").shouldBe(visible).click ();
         switchTo().window(mainWindows3);
         switchWindowOrFrame.tabFrameAcc("#Tab1");
         $("#ddVidBlkK").shouldBe(visible).click ();
         String mainWindows45 = getWebDriver ().getWindowHandle(); //запоминаем первое окно
         checkPageAvailability.threePage ( "webService" );
-        $("#td_29").shouldBe(visible).click ();
+        $("#td_25").shouldBe(visible).click ();
         switchTo().window(mainWindows45);
         switchWindowOrFrame.defaultContent();
         //Access rights ---------------------------------//
