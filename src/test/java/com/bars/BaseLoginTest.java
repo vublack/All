@@ -3,7 +3,9 @@ package com.bars;
 import com.bars.generalСlasses.LoginPage;
 import com.bars.generalСlasses.SearchPage;
 import com.bars.generalСlasses.SwitchWindowOrFrame;
+import com.bars.helperClasses.Calculation;
 import com.bars.helperClasses.ConfigProperties;
+import com.bars.helperClasses.DBoperation;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -12,6 +14,8 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.*;
 import org.junit.rules.TestRule;
+
+import java.sql.SQLException;
 
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.close;
@@ -22,15 +26,23 @@ public class BaseLoginTest {
     private static LoginPage loginPage = new LoginPage();
     private static SearchPage searchPage = new SearchPage();
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
+    private static Calculation calculation = new Calculation();
+    private  static DBoperation dBoperation =new DBoperation();
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
     @Rule
     public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(false);
     @BeforeClass
-    public static void setup() {
+    public static void setup() throws SQLException {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
+
+/*        dBoperation.setupDBconection("MMFOM");
+        dBoperation.updateDB(
+                "update branch_attribute_value ba set ba.attribute_value = '"+ calculation.sysdate() +"' where ba.attribute_code = 'BANKDATE'");
+        dBoperation.closeConn();
+    */
         timeout = 120000;
 //        browser = "chrome";
         browser = "ie";

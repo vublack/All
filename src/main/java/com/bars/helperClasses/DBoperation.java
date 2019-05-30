@@ -59,4 +59,19 @@ public class DBoperation {
         }
         return selectStringValue;
     }
+
+    public void updateDB (String sqlScript) throws SQLException {
+        Statement statement = conn.createStatement();
+        try{
+        statement.executeQuery(sqlScript);
+        conn.commit();
+        conn.setAutoCommit(true);
+        }
+        catch(SQLException ex) {
+            System.err.println("SQLException: " + ex.getMessage());
+            conn.rollback();
+            conn.setAutoCommit(true);
+        }
+    }
 }
+

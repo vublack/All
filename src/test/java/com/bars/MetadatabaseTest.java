@@ -4,10 +4,13 @@ import com.bars.bmd.BmdActionsWithRow;
 import com.bars.generalСlasses.FilterBeforFillingTable;
 import com.bars.generalСlasses.SearchPage;
 import com.bars.generalСlasses.SwitchWindowOrFrame;
+import com.bars.helperClasses.DBoperation;
 import com.bars.helperClasses.ReadingFromFile;
 import com.codeborne.selenide.CollectionCondition;
 import org.junit.Test;
 import org.openqa.selenium.By;
+
+import java.sql.SQLException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -21,10 +24,9 @@ public class MetadatabaseTest extends BaseLoginTest {
     private FilterBeforFillingTable filterBeforFillingTable = page(FilterBeforFillingTable.class);
     private BmdActionsWithRow bmdActionsWithRow = page(BmdActionsWithRow.class);
 
-
 //   @Ignore
     @Test
-    public void bmdFilterBefor(){
+    public void bmdFilterBefor() {
         searchPage.searchFunction("Портфель РОБОЧИХ кредитів ЮО", "1819");
         //Робота з фільтром
         filterBeforFillingTable.clearFilter();
