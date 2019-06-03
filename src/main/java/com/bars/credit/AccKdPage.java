@@ -14,7 +14,7 @@ public class AccKdPage {
         String ob22forSS = newCreditPage.getOB22forSS(ConfigProperties.getTestProperty(productStyle));
         $x("//tr[@class='k-alt']/td[4]").shouldHave(text(nbsForSS ));
         String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
-        if( base.equals("OBMMFOT")) {
+        if( base.equals("OBIBANM")) {
             $x("//tr[@class='k-alt']/td[7]").shouldHave(text(ob22forSS));
         }
         else {
