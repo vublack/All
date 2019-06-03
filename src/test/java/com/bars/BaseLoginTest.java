@@ -26,8 +26,7 @@ public class BaseLoginTest {
     private static LoginPage loginPage = new LoginPage();
     private static SearchPage searchPage = new SearchPage();
     private static SwitchWindowOrFrame switchWindowOrFrame = new SwitchWindowOrFrame();
-    private static Calculation calculation = new Calculation();
-    private  static DBoperation dBoperation =new DBoperation();
+
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests().to("test-results/reports");
@@ -37,12 +36,7 @@ public class BaseLoginTest {
     public static void setup() throws SQLException {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
-
-/*        dBoperation.setupDBconection("MMFOM");
-        dBoperation.updateDB(
-                "update branch_attribute_value ba set ba.attribute_value = '"+ calculation.sysdate() +"' where ba.attribute_code = 'BANKDATE'");
-        dBoperation.closeConn();
-    */
+        loginPage.changeDbBankDate();
         timeout = 120000;
 //        browser = "chrome";
         browser = "ie";
