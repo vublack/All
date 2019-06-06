@@ -1,14 +1,17 @@
 package com.bars.helperClasses;
 
+import com.bars.generalСlasses.LoginPage;
+
 import java.sql.*;
 
 public class DBoperation {
+
     Connection conn = null;
-    public void setupDBconection (String dbName) throws SQLException {
+    public void setupDBconection () throws SQLException {
 //        Задаем параметры подключения: URL, имя пользователя и пароль
-        String url = ConfigProperties.getTestProperty(dbName+"_DB_URL");
-        String userName = ConfigProperties.getTestProperty(dbName+"_DB_USERNAME");
-        String password = ConfigProperties.getTestProperty(dbName+"_DB_PASSWORD");
+        String url = ConfigProperties.getTestProperty(LoginPage.dbName+"_DB_URL");
+        String userName = ConfigProperties.getTestProperty(LoginPage.dbName+"_DB_USERNAME");
+        String password = ConfigProperties.getTestProperty(LoginPage.dbName+"_DB_PASSWORD");
 
 //        Регистриуем драйвер с помощью статического инициализатора
         // Register JDBC driver (JDBC driver name and Database URL)
