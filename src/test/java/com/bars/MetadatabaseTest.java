@@ -61,33 +61,5 @@ public class MetadatabaseTest extends BaseLoginTest {
         //!!!!Довідник спецпараметрів!!!!-!!!!Видалення рядка!!!!
         bmdActionsWithRow.DelRow("98A");
         }
-
-//    @Ignore
-    @Test
-    public void bmdChko()  {
-        //Страница поиска
-        String base = ReadingFromFile.read("Polygon.txt" ).replace("DB ", "");
-        searchPage.searchFunction("Ліміти.", "1773");
-        $(By.xpath("(//*[@class='x-grid-cell-inner x-grid-cell-inner-row-numberer'])[text()='2']")).shouldBe(visible).click();
-        String OverdraftLimWindow = getWebDriver().getWindowHandle();
-        $(By.xpath("//*[@class='x-btn-icon-el INSERT ']")).shouldBe(visible).click();
-        switchWindowOrFrame.forceSwitchToWindow2(OverdraftLimWindow);
-        switchWindowOrFrame.windowMaximize();
-        $(By.xpath("//input[@name='X']")).shouldBe(visible).setValue("01.01.2018");
-        $(byText("Виконати")).click();
-        $(byText("Далі")).click();
-        String netCreditTurnover = getWebDriver().getWindowHandle();
-        $$(By.xpath("//*[@class='x-grid-cell-inner ']")).shouldBe(CollectionCondition.sizeGreaterThanOrEqual(12));
-        if( base.equals("OBMMFOT")) {
-            String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("0")).getText();
-            System.out.println("Ркзультат: " + Result);
-        }
-        else {
-            String Result = $(By.xpath("(//tfoot/tr/td/div)[10]")).shouldHave(text("41")).getText();
-            System.out.println("Ркзультат: " + Result);
-        }
-        switchWindowOrFrame.closeWindow(netCreditTurnover );
-        switchWindowOrFrame.switchToOldWindow(OverdraftLimWindow);
-     }
 }
 
