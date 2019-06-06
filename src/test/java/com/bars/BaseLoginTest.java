@@ -36,7 +36,7 @@ public class BaseLoginTest {
     public static void setup() throws SQLException {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 //        Configuration.fastSetValue=true;
-//        loginPage.changeDbBankDate();
+        loginPage.changeDbBankDate();
         timeout = 120000;
 //        browser = "chrome";
         browser = "ie";
