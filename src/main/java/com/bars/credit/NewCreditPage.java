@@ -107,8 +107,10 @@ public class NewCreditPage {
         $x("(//th[text()='Код реквізиту']/a)").shouldBe(visible).click();
     }
         //Основні
-    public void creditInsurance(){
+    public void additionalParamTab(){
         $x("//span[text()='Дод. параметри КД']").shouldBe(visible).click();
+    }
+     public void creditInsurance(){
         $x("(//*[text()='Страхування кредиту']/following::a)[1]").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
@@ -119,7 +121,6 @@ public class NewCreditPage {
     }
 
     public void s260(){
-        $x("(//*[text()='I_CR9']/following::a[@title='Перейдіть на наступну сторінку'])[1]").shouldBe(visible).click();
         $x("(//*[text()='Код iндив.споживання за цiлями S260']/following::a)[1]").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
         $x("//th[@data-field='S260']/a[@class='k-grid-filter']").shouldBe(visible).click();

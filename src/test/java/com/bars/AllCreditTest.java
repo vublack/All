@@ -96,14 +96,21 @@ public class AllCreditTest extends BaseLoginTest {
         String firstPaymentDate = newCreditPage.getConclusionDate();
         newCreditPage.firstPaymentDate(firstPaymentDate);
         //Вкладка Дод. параметри КД
+        newCreditPage.additionalParamTab();
+        newCreditPage.pressFilterByCode();
+        newCreditPage.filterInput("INSCC");
         newCreditPage.creditInsurance();
-        newCreditPage.filterInput("NO");
+        newCreditPage.filterInput2("NO");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
+        newCreditPage.pressFilterByCode();
+        newCreditPage.filterInput("S260");
         newCreditPage.s260();
-        newCreditPage.filterInput("01");
+        newCreditPage.filterInput2("01");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
+
+
         newCreditPage.contractStatus();
         newCreditPage.filterInputClick();
         newCreditPage.filterInput("0");
@@ -257,8 +264,11 @@ public class AllCreditTest extends BaseLoginTest {
         String firstPaymentDate = newCreditPage.getConclusionDate();
         newCreditPage.firstPaymentDate(firstPaymentDate);
         //Вкладка Дод. параметри КД
+        newCreditPage.additionalParamTab();
+        newCreditPage.pressFilterByCode();
+        newCreditPage.filterInput("INSCC");
         newCreditPage.creditInsurance();
-        newCreditPage.filterInput("NO");
+        newCreditPage.filterInput2("NO");
         switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
         newCreditPage.updateParameter();
 
