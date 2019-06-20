@@ -99,9 +99,8 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.additionalParamTab();
         newCreditPage.pressFilterByCode();
         newCreditPage.filterInput("INSCC");
-        newCreditPage.creditInsurance();
-        newCreditPage.filterInput2("NO");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
+        newCreditPage.creditInsurance("NO");
         newCreditPage.updateParameter();
         newCreditPage.pressFilterByCode();
         newCreditPage.filterInput("S260");
@@ -113,17 +112,17 @@ public class AllCreditTest extends BaseLoginTest {
 
         newCreditPage.contractStatus();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("0");
+        newCreditPage.filterInput2("0");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.creditProduct();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2");
+        newCreditPage.filterInput2("2");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCB();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2");
+        newCreditPage.filterInput2("2");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCE("33");
@@ -132,7 +131,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCS();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2");
+        newCreditPage.filterInput2("2");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBCW("33");
@@ -140,7 +139,7 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.fillEIBIE("33");
         newCreditPage.updateParameter();
         newCreditPage.fillEIBIS();
-        newCreditPage.filterInput("NO");
+        newCreditPage.filterInput2("NO");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBND("33 тест");
@@ -149,19 +148,19 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.updateParameter();
         newCreditPage.fillEIBPF();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("1");
+        newCreditPage.filterInput2("1");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBSF();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("1");
+        newCreditPage.filterInput2("1");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         newCreditPage.fillEIBTV("33");
         newCreditPage.updateParameter();
         newCreditPage.notary();
         newCreditPage.filterInputClick();
-        newCreditPage.filterInput("2134");
+        newCreditPage.filterInput2("2134");
         switchWindowOrFrame.switchToOldWindow(newKdUoWindow);
         newCreditPage.updateParameter();
         //Нажимаем на кнопку "Зберігти"
@@ -267,9 +266,8 @@ public class AllCreditTest extends BaseLoginTest {
         newCreditPage.additionalParamTab();
         newCreditPage.pressFilterByCode();
         newCreditPage.filterInput("INSCC");
-        newCreditPage.creditInsurance();
-        newCreditPage.filterInput2("NO");
         switchWindowOrFrame.switchToOldWindow(newKdFoWindow);
+        newCreditPage.creditInsurance("NO");
         newCreditPage.updateParameter();
 
         newCreditPage.pressFilterByCode();
@@ -279,7 +277,7 @@ public class AllCreditTest extends BaseLoginTest {
 
         if( base.equals("OBMMFOT"))
         {
-             newCreditPage.pressFilterByCode();
+            newCreditPage.pressFilterByCode();
             newCreditPage.filterInput("PARTC");
             newCreditPage.сentralOfficeContract();
             newCreditPage.filterInput2("NO");

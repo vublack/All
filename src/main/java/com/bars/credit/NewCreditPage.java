@@ -110,10 +110,13 @@ public class NewCreditPage {
     public void additionalParamTab(){
         $x("//span[text()='Дод. параметри КД']").shouldBe(visible).click();
     }
-     public void creditInsurance(){
+     public void creditInsurance(String creditInsurance){
         $x("(//*[text()='Страхування кредиту']/following::a)[1]").shouldBe(visible).click();
         switchWindowOrFrame.switchToWindow2();
-        $x("//th[@data-field='ID']/a[@class='k-grid-filter']").shouldBe(visible).click();
+        $x("//*[text()='Відмінити']").shouldBe(visible).click();
+//        $x("//th[@data-field='ID']/a[@class='k-grid-filter']").pressEscape();
+        $x("//*[text()='INSCC']/following::input").shouldBe(visible).setValue(creditInsurance);
+
     }
     public void marketRate(String marketRate){
         $x("(//*[text()='INTRT']/following::a)[1]").shouldBe(visible).click();
